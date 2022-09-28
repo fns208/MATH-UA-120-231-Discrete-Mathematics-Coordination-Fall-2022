@@ -1,10 +1,17 @@
 \documentclass{article}
+% This is a LaTeX file.  It is a text file that is compiled
+% by a program called LaTeX into a pretty PDF file.  
+% If you're viewing this file on CoCalc, you'll see that PDF 
+% in the window to the right.
+%
 % The LaTeX macro language is complicated, so we have inserted
 % lots of documenting comments into the file.  Comments start
-% with `%' and continue to the end of the line.  In Overleaf's
-% window, they are colored blue.
+% with `%' and continue to the end of the line.  In CoCalc's
+% window, they are colored brownish-red.
+%
 % Comments prefixed with `Student:' are relevant to students.
 % Skip anything else you don't understand, or ask me.
+%
 % set font encoding for PDFLaTeX or XeLaTeX
 \usepackage{ifxetex}
 \ifxetex
@@ -16,13 +23,13 @@
 \fi
 
 % Student: These lines describe some document metadata.
-\title{Problem Set 1}
+\title{Homework Assignment 1}
 \author{%
 % Student: change the next line to your name!
     Name
 \\  MATH-UA 120 Discrete Mathematics
 }
-\date{due September 23, 11pm on Gradescope}
+\date{due September 23, 2022 at 11:00pm}
 
 
 \usepackage[headings=runin-fixed-nr]{exsheets}
@@ -44,7 +51,7 @@
 \newif\ifshowsolutions
 % Student: replace `false' with `true' to typeset your solutions.
 % Otherwise they are ignored!
-\showsolutionsfalse
+\showsolutionstrue
 \ifshowsolutions
     \SetupExSheets{
         question/pre-hook=\itshape,
@@ -77,7 +84,6 @@
 \newtheorem*{definition}{Definition}
 % We are creating a command "\xor".
 \newcommand{\xor}{\underline{\lor}}
-
 % This is the beginning of the part of the file that describes
 % the text of the document.
 % That's why it says `\begin{document}' below. :-)
@@ -86,7 +92,7 @@
 
 
 
-These are to be written up in \LaTeX and turned in to Gradescope.\\
+These are to be written up and turned in to Gradescope.\\
 
 
 
@@ -111,6 +117,15 @@ Determine if the following statement is true or false and support your reasoning
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+Note that $1$ is a positive integer. By the definition of prime, we only consider integers greater than one; hence $1$ is not prime. By the definition of composite, we would need to find an integer $b$ such that $1<b<1$ and $b\mid 1$. Since no such $b$ exists, $1$ is not considered a composite. Since $1$ is neither prime nor composite, the statement is false.
+
+{\color{red} Rubric:
+\begin{itemize}
+\item 1P for example
+\item 4P for prime argument
+\item 4P for composite argument
+\item 1P for conclusion
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -138,7 +153,18 @@ Determine if the following statement is true or false and support your reasoning
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+\item \begin{definition}Suppose $l$ and $m$ are (distinct) lines in the plane. We say that $l$ and $m$ are \emph{parallel} provided they have no points in common.\end{definition}
+\item Note that the point $(1, 3)$ is on both lines $y=2x+1$ and $y=x+2$. Since the two lines have a point in common, they are not parallel.
+\end{enumerate}
 
+{\color{red} Rubric:
+\begin{itemize}
+\item 4P for correct definition (part a)
+\item 6P for Part b where
+\item 4P for correct use of their definition argument (regardless if the definition it correct or not)
+\item 2P for correct example based on their definition (regardless if the definition it correct or not)
+\end{itemize}}
 \end{solution}
 
 
@@ -168,8 +194,23 @@ of the following three sentences are true and which are false:
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+    \begin{enumerate}
+        \item All rectangles are parallelograms, but not all parallelograms are rectangles.
+              So ``If $A$, then $B$ is true, ``If $B$, then $A$ '' is false, and ``$A$ if and only if $B$'' is false.
+        \item All grandfathers are male, but not all males are grandfathers.
+              So ``If $A$, then $B$ is true, ``If $B$, then $A$ '' is false, and ``$A$ if and only if $B$'' is false.   
+                       \item All positive numbers have positive squares.  But $(-3)^2 = 9 > 0$, yet $-3 < 0$.
+              So ``If $A$, then $B$ is true, ``If $B$, then $A$ '' is false, and ``$A$ if and only if $B$'' is false.
+         \item These are equivalent statements.
+              ``If $A$, then $B$ is true, ``If $B$, then $A$ '' is true, and ``$A$ if and only if $B$'' is true.   
+       \end{enumerate}
+       
+{\color{red} Rubric:
+\begin{itemize}
+\item 2.5P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
-
 
 \begin{question}
     (Scheinerman, Exercise 5.11:)
@@ -179,8 +220,17 @@ of the following three sentences are true and which are false:
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+Suppose that $d|a$ and $d|b$.  By the definition of divisibility, there is an integer $m$ such that $a = md$ and an integer $n$ such that $b = nd$.  Therefore, we can write $ax + by$ in terms of $d, m$, and $n$ as follows:
+\begin{eqnarray*} 
+ax + by & = & (md)x + (nd)y \\
+	& = & d(mx + ny).
+\end{eqnarray*}
+Since $mx + ny$ is an integer, then by the definition of divisibility, $d | (ax + by)$.\\
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for proper use of \LaTeX
+\end{itemize}}
 \end{solution}
-
 
 
 \begin{question}
@@ -195,6 +245,29 @@ Consider the following definition of the ``$\triangleleft$'' symbol.
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+\item We want to find an integer $k$ that satisfies $3x+5y=7k$.
+	\begin{itemize}
+	\item For $1\triangleleft 5$, we need $k=4$ such that $3(1)+5(5)=7(4)$.
+	\item For $3\triangleleft 1$, we need $k=2$ such that $3(3)+5(1)=7(2)$.
+	\item For $0\triangleleft 7$, we need $k=5$ such that $3(0)+5(7)=7(5)$.
+	\end{itemize}
+\item 
+	\begin{itemize}
+	\item Suppose that $a\triangleleft b$ and $c\triangleleft d$. 
+	\item Then there exists integers $k_1$ and $k_2$ such that $3a+5b=7k_1$ and $3c+5d=7k_2$.
+	\item \begin{eqnarray*}
+	(3a+5b) + (3c+5d) &=& 7k_1 + 7k_2\\
+	3(a+c) + 5(b + d) &=& 7(k_1+k_2)
+	\end{eqnarray*}
+	\item Let $k=k_1+k_2$. Since there exists an integer $k$ such that $$3(a+c) + 5(b + d)=7k,$$ $(a+c) \triangleleft (b+d)$.
+	\end{itemize}
+\end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 1P for part a
+\item Part b: follow RVF 9P rubric
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -202,6 +275,28 @@ Consider the following definition of the ``$\triangleleft$'' symbol.
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+This statement can be written as 
+	
+	\begin{center}
+		$n \in \mathbb{Z}$ is odd $\iff 4 ~|~ (2n+2)$.
+	\end{center}
+	
+ ($\Rightarrow$) Assume first that $n$ is odd. Then we can write $n = 2k+1$ for some integer $k$. Then
+	\[
+	2 n + 2 = 2 (2k + 1) + 2 = 4 k + 2 + 2 = 4 k + 4 = 4 (k+1).
+	\]
+	Since $k+1 \in \mathbb{Z}$, it means by definition that $2 n + 2$ is divisible by 4.
+	
+	($\Leftarrow$)  Assume now that $2n + 2$ is divisible by 4. Then we can write $2n + 2 = 4k$ for some $k \in \mathbb{Z}$. Simplifying gives $n + 1 = 2k$, and thus
+	\[
+	n = 2 k - 1 = 2 (k - 1) + 1.
+	\]
+	Since $k - 1 \in \mathbb{Z}$, this means by definition that $n$ is odd.
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF 9P rubric 
+\item 1P for proper use of \LaTeX to indicate the two directions, or clearly stating in words.
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -212,6 +307,18 @@ Consider the following definition of the ``$\triangleleft$'' symbol.
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+\item Consider $x=\frac{1}{2}$, which is a real number. Note that $\left(\frac{1}{2}\right)^2=\frac{1}{4}$ and $\frac{1}{4}< \frac{1}{2}$. Therefore the statement $x^2\geq x$ is false.
+
+\item Consider $n=9$, which is a positive nonprime integer. Notice that the prime number $p=3$ divides 9. But since $9=3^2$, no other prime number divides 9. Therefore the statement is false.
+\end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 5P per part: 
+\item 2P for a valid example
+\item 2P for correct argument
+\item 1P for conclusion
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -262,11 +369,38 @@ Consider the following definition of the ``$\triangleleft$'' symbol.
     are tautologies:
     \begin{enumerate}
         \item $(x \rightarrow \mathrm{FALSE}) \rightarrow \neg x$
-        \item $((x \rightarrow y) \wedge (x \rightarrow \neg y)) \rightarrow \neg x$
+        \item $(x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x$
     \end{enumerate}
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+\begin{enumerate}
+        \item
+        \begin{align*}
+            (x \rightarrow \mathrm{FALSE}) \rightarrow \neg x
+            &=\neg(\neg x \vee \mathrm{FALSE}) \vee \neg x
+          \\&=(x \wedge \mathrm{TRUE}) \vee \neg x 
+          \\&=(x \vee \neg x)\wedge(\mathrm{TRUE} \vee \neg x) 
+          \\&= \mathrm{TRUE} \wedge \mathrm{TRUE} = \mathrm{TRUE}
+        \end{align*}
+        \item
+        \begin{align*}
+            (x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x
+            &= \neg((\neg x \vee y) \wedge (\neg x \vee \neg y)) \vee \neg x
+          \\&= (\neg(\neg x \vee y) \vee \neg(\neg x \vee \neg y)) \vee \neg x
+          \\&= ((x \wedge \neg y) \vee (x \wedge y)) \vee \neg x
+          \\&= (x \wedge (\neg y \vee y))\vee \neg x
+          \\&= (x \wedge \mathrm{TRUE}) \vee \neg x
+          \\&= x \vee \neg x = \mathrm{TRUE}
+        \end{align*}
+    \end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 5P per part: 
+\item 4P for correct argument
+\item 1P for conclusion
+\item Grader: Please expand on rubric yourself
+\end{itemize}}
 \end{solution}
 
 
@@ -308,6 +442,38 @@ Here is another Boolean operation called \textit{exclusive or}; it is denoted by
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+	\begin{enumerate}
+	\item 
+	\[\begin{array}{| c | c || c | c | c |}
+	\hline
+	x & y & x\wedge \neg y & (\neg x)\wedge y & (x \wedge \neg y) \vee ((\neg x) \wedge y)\\
+	\hline
+		T & T & F & F & F\\
+		T & F & T & F & T\\
+		F & T & F & T & T\\
+		F & F & F & F & F\\
+	\hline
+	\end{array}\]
+	\item 
+	\[\begin{array}{| c | c || c | c | c |}
+	\hline
+	x & y & x\vee y & \neg (x \wedge y) & (x \vee y) \wedge (\neg (x \wedge y))\\
+	\hline
+		T & T & T & F & F\\
+		T & F & T & T & T\\
+		F & T & T & T & T\\
+		F & F & F & T & F\\
+	\hline
+	\end{array}\]
+	\item It is called ``\textit{exclusive or}'' because it captures the exclusive nature of the English ``\textit{or}'': you have have option A or B, \textit{but not both}. In the same way $x\xor y$ when $x$ or $y$ \textit{but not both} are $\mathtt{TRUE}$.
+	\end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item Part a: 4P
+\item Part b: 4P
+\item Part c: 2P for correct argument
+\item Grader: Please expand on rubric yourself
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -319,15 +485,41 @@ Here is another Boolean operation called \textit{exclusive or}; it is denoted by
 		\end{align*}
 	\begin{enumerate}
 		\item Rewrite the following statement as a Boolean expression.\\
-			\begin{quote}
+			\begin{center}
 			If Jeremiah is hungry and the refrigerator is empty, then Jeremiah is mad.
-			\end{quote}
+			\end{center}
 		\item Construct a truth table for the statement in part (a).
 		\item Suppose that the statement given in part (a) is true, and suppose also that Jeremiah is not mad and the refrigerator is empty. Is Jeremiah hungry? Justify your answer using the truth table.
 	\end{enumerate}
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
+	\begin{enumerate}
+	\item $p\wedge q \to r$
+	\item 
+	\[\begin{array}{| c | c | c || c | c |}
+	\hline
+	p & q & r & p \wedge q & p \wedge q \to r\\
+	\hline
+		T & T & T & T & T\\
+		T & T & F & T & F\\
+		T & F & T & F & T\\
+		T & F & F & F & T\\
+		F & T & T & F & T\\
+		F & T & F & F & T\\
+		F & F & T & F & T\\
+		F & F & F & F & T\\
+	\hline
+	\end{array}\]
+	\item The only row where $r=False, q=True$, and $p \wedge q \to r=True$ is row 6 where $p=False$. Therefore, Jeremiah is not hungry.
+	\end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item Part a: 2P
+\item Part b: 6P
+\item Part c: 2P 
+\item Grader: Please expand on rubric yourself
+\end{itemize}}
 \end{solution}
 
 \end{document}

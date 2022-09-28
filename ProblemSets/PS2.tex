@@ -1,0 +1,227 @@
+\documentclass{article}
+% The LaTeX macro language is complicated, so we have inserted
+% lots of documenting comments into the file.  Comments start
+% with `%' and continue to the end of the line.  In Overleaf's
+% window, they are colored blue.
+% Comments prefixed with `Student:' are relevant to students.
+% Skip anything else you don't understand, or ask me.
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% Student: These lines describe some document metadata.
+\title{Problem Set 2}
+\author{%
+% Student: change the next line to your name!
+    Name
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due October 7, 2022 at 11:00pm}
+
+
+\usepackage[headings=runin-fixed-nr]{exsheets}
+% These make enumerates within questions start at the second ("(a)") level, rather than the first ("1.") level.
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+% Student: replace `false' with `true' to typeset your solutions.
+% Otherwise they are ignored!
+\showsolutionsfalse
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+% We are creating a command "\xor".
+\newcommand{\xor}{\underline{\lor}}
+% This is the beginning of the part of the file that describes
+% the text of the document.
+% That's why it says `\begin{document}' below. :-)
+\begin{document}
+\maketitle
+
+
+
+These are to be written up in \LaTeX and turned in to Gradescope.\\
+
+
+
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+
+\section*{Assigned Problems}
+
+\begin{question}
+Consider a group consisting of 3 dogs and 3 cats. Answer the following questions, giving a quick explanation in each case.
+
+\begin{enumerate}
+	\item In how many ways can they all sit in a row? In how many ways can they sit in a row if the dogs sit together and the cats sit together?
+	\item In how many ways can they sit in a row if only the dogs are required to sit together?
+	\item In how many ways can they sit in a row if no two animals of the same species are allowed to sit next to each other?
+	\item In how many ways can the animals sit together around a round table? Here, the only thing that matters is who is sitting next to whom.
+\end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+    The internet is a network of interconnected computers. Each computer interface on the Internet is identified by an Internet address. In IPv4 (Internet Protocol, Version 4), the addresses are divided into five classes -- Classes A through Classes E. Only Classes A, B, and C are used to identify computers on the Internet.
+    
+    A Class A address is a bit string of length 32. A bit string consists of $0$'s and $1$'s. The first bit is 0 (to identify it as a Class A address). The next 7 bits, called the \textit{netid}, identify the network. The remaining 24 bits, called the \textit{hostid}, identify the computer interface. The netid must not consist of all 1's. The hostid must not consist of all 0's or all 1's. How many Class A Internet addresses are there?
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+   (Scheinerman, Exercise 10.11:)
+   Let $a$ and $b$ be integers, and let $A = \{x \in \mathbb{Z} ~:~ a|x\}$ and $B = \{ x\in\mathbb{Z} ~:~ b|x\}$.  
+   Find and prove a necessary and sufficient condition for $A \subseteq B$.
+   (That is, find some condition in terms of $a$ and $b$ such that the statement\\~\\
+   $~~~$ ``$A \subseteq B$ if and only if [the condition involving $a$ and $b$ you provide is satisfied]''\\~\\
+   is true.  Then, prove this if-and-only-if statement.)
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+Describe explicitly in English the following sets, then give their cardinality.
+
+\begin{enumerate}
+	\item $\{x \in 2^{\mathbb{Z}} : 5 \in x \}$
+	\item $\{x \in 2^{\mathbb{Z}} : x \subseteq \{ 1, 2, 3\} \}$
+	\item $\{x \in 2^{\mathbb{Z}} : x \subseteq \{ 1, 2, \{3, 4\} \} \}$
+	\item $\{x \in 2^{\mathbb{Z}} : x \in \{ 1, 2, \{3, 4\} \} \}$
+	\item $\{x \in 2^{\mathbb{Z}} : y \in x \implies y = 0 \}$
+\end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+\begin{enumerate}
+	\item For each of the following statements, describe it in English, and say if it is true or false (without proof). Then write its negation using quantifier, and express this negation in English. For instance, the statement $\forall x \in \mathbb{Z} \; x < 0$ means every integer is negative, and it is false. Its negation is $\exists x \in \mathbb{Z} \; x \geq 0$, which means that there exists a nonnegative integer.
+	
+	\begin{enumerate}
+		\item $\forall x \in \mathbb{Z} \; \forall y \in \mathbb{Z} \; x + y = 0$
+		\item $\forall x \in \mathbb{Z} \; \exists y \in \mathbb{Z} \; x + y = 0$
+		\item $\forall n \in \mathbb{Z} \; \exists k \in \mathbb{Z} \; \exists d \in \mathbb{Z} \; k+ n = 2d$
+		\item $\exists n \in \mathbb{Z} \; \forall k \in \mathbb{Z} \; \exists d \in \mathbb{Z} \; k+ n = 2d$
+	\end{enumerate}
+	
+	\item For each of the statements (c) and (d): prove it if it is true, or prove the negation if it is false. These proofs are short.
+\end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+    (Scheinerman, Exercise 12.3:)
+    Let $A$ and $B$ be sets with $|A| = 10$ and $|B| = 7$.
+    What can we say about $|A\cup B|$?
+    
+    In particular, find two numbers $x$ and $y$ for which we can be sure that $x \leq |A \cup B| \leq y$ and then find specific sets $A$ and $B$ so that $|A \cup B| = x$ and another pair of sets so that $|A \cup B| = y$.
+    
+    Finally, answer the same question about $|A\cap B|$.  
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+   Let $I=\{1, 2, \dots, n\}$. Given a collection of sets $\{A_1,A_2,\dots, A_n\}$, denoted by $\{A_i\}_{i\in I}$. $\{A_i\}_{i\in I}$ is said to be \textbf{disjoint} if $\cap_{i\in I}A_i=\emptyset$, and it is said to be \textbf{pairwise disjoint} if $A_i\cap A_j=\emptyset$ whenever $i\neq j$. What is the difference between a \textbf{disjoint} collection of sets and a \textbf{pairwise disjoint} collection of sets? (\textit{Draw a picture to convince yourself.}) Give an example of a collection of sets that is disjoint, but not pairwise disjoint. (\textit{Hint: You need a minimum of three sets.})
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+   (Scheinerman, Exercise 12.19:)
+   Prove:
+   \[ A-(B\cup C)=(A-B)\cap(A-C).\]
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+    Let $n$ be a positive integer.  Give a combinatorial proof of the identity:
+    \[ n^3 = n(n-1)(n-2) + 3n(n-1) + n. \]
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question} 
+    Prove, combinatorially, that
+    \[ 2 \cdot 3^0 + 2 \cdot 3^1 + 2 \cdot 3^2 + \ldots + 2 \cdot 3^{n-1} = 3^n - 1. \]
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+\end{document}
