@@ -1,10 +1,17 @@
 \documentclass{article}
+% This is a LaTeX file.  It is a text file that is compiled
+% by a program called LaTeX into a pretty PDF file.  
+% If you're viewing this file on CoCalc, you'll see that PDF 
+% in the window to the right.
+%
 % The LaTeX macro language is complicated, so we have inserted
 % lots of documenting comments into the file.  Comments start
-% with `%' and continue to the end of the line.  In Overleaf's
-% window, they are colored blue.
+% with `%' and continue to the end of the line.  In CoCalc's
+% window, they are colored brownish-red.
+%
 % Comments prefixed with `Student:' are relevant to students.
 % Skip anything else you don't understand, or ask me.
+%
 % set font encoding for PDFLaTeX or XeLaTeX
 \usepackage{ifxetex}
 \ifxetex
@@ -132,8 +139,11 @@ Consider a group consisting of 3 dogs and 3 cats. Answer the following questions
 	\item There are $6!$ to choose an ordering around the table. However, each order $ABCDEF$ is the same as $BCDEFA$, $CDEFAB$, \dots, when sitting around a round table. This leaves a total of $6! / 6 = 5!$ possible ways.
 	
 \end{enumerate}
-
-%{\color{red} Rubric: 2P answers and 2P for explanation.}
+{\color{red} Rubric:
+\begin{itemize}
+\item 2.5P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -149,7 +159,12 @@ Let's consider the total of all possible lists first. There are $2^7$ total 7-bi
 (2^7-1)(2^{24}-2)
 \]
 Class A Internet addresses.
-%{\color{red} Rubric: 2P answers and 1P for explanation.}
+{\color{red} Rubric:
+\begin{itemize}
+\item 2P for each part of answer
+\item 2P for explanation
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -187,6 +202,10 @@ Since $mk$ is an integer and $x = b(mk)$, then $b|x$.  Therefore, $x \in B$.
 
 This shows that $A \subseteq B$.
 \end{proof}
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for correct claim
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -224,6 +243,11 @@ Describe explicitly in English the following sets, then give their cardinality.
 	\left | \{x \in 2^{\Z} : y \in x \implies y = 0 \} \right | = 2.
 	\]
 \end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 2P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -288,6 +312,13 @@ Describe explicitly in English the following sets, then give their cardinality.
 	\end{itemize}
 	
 \end{enumerate}
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Part a: 1.5P for each part
+\item Part b: 2P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -324,6 +355,11 @@ Describe explicitly in English the following sets, then give their cardinality.
     To be specific, let $A = \{1,2,\dots,10\}$.
     If $B = \{1,2,\dots,7\}$, then $|A \cup B| = |A| =10$ and $|A \cap B| = |B| = 7$.
     If instead $B = \{11,12,\dots,17\}$, then $|A \cup B| = 17$ and $|A \cap B| = 0$.
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for answer
+\end{itemize}}
 \end{solution}
 
 
@@ -363,6 +399,12 @@ A_2\cap A_3 &=\{6\},
 \end{align*}
 which is not pairwise disjoint.
 \end{itemize}
+
+{\color{red} Rubric:
+\begin{itemize}
+\item 5P for explanation
+\item 5P for example and explanation of example.
+\end{itemize}}
 \end{solution}
 
 
@@ -382,6 +424,10 @@ We will prove $A-(B\cup C) = (A-B)\cap(A-C)$, by first proving $A-(B\cup C) \sub
 \end{enumerate}
 Therefore, $A-(B\cup C) = (A-B)\cap(A-C)$.
 \end{proof}
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 
@@ -401,6 +447,11 @@ Therefore, $A-(B\cup C) = (A-B)\cap(A-C)$.
     
     Therefore, both $n^3$ and $n(n-1)(n-2)+3n(n-1)+n$ are the number of elements in $S$. So it must be the case that
     \[n^3 = n(n-1)(n-2) + 3n(n-1) + n. \]
+    
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 \begin{question}
@@ -431,6 +482,11 @@ Therefore, $|S| = \displaystyle\sum_{i=1}^n |S_i| = \sum_{i=1}^n 2\cdot 3^{n-i} 
 
 Therefore, both $2 \cdot 3^0 + 2 \cdot 3^1 + 2 \cdot 3^2 + \ldots + 2 \cdot 3^{n-1}$ and $3^n-1$ are the number of elements in $S$.  So, it must be the case that
 \[2 \cdot 3^0 + 2 \cdot 3^1 + 2 \cdot 3^2 + \ldots + 2 \cdot 3^{n-1} = 3^n - 1. \]
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 \end{document}
