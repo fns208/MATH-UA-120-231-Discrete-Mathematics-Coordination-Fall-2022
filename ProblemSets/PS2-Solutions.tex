@@ -129,7 +129,9 @@ Consider a group consisting of 3 dogs and 3 cats. Answer the following questions
 	
 	\item We have 6 choices for the first animal, then 3 choices for the second one (since they have to be of a different species), then 2 choices for the third one, 2 for the fourth one, and one choices for the two remaining ones, for a total of $6 \times 3 \times 2^2$.
 	
-	\item There are $6!$ to choose an ordering around the table. However, each order $ABCDEF$ is the same as $BCDEFA$, $CDEFAB$, \dots, when sitting around a round table. This leaves a total of $6! / 6 = 5!$ possible ways.
+	\item There are $6!$ ways to choose an ordering around the table. However, each order $ABCDEF$ is the same as $BCDEFA$, $CDEFAB$, \dots, when sitting around a round table. This leaves a total of $6! / 6 = 5!$ possible ways.
+
+    \textbf{Alternate acceptable solution:} If we do not care about keeping track of who is sitting on the right and on the left of each animal, then reversing the order makes no difference: we regard $ABCDEF$ as the ``same seating arrangement'' as $FEDCBA$, since in both cases, for each animal, the same two other animals are sitting in adjacent seats. In this case we would divide the previous answer by 2 to obtain $5! / 2 = 60$ possible ways.
 	
 \end{enumerate}
 
