@@ -1,11 +1,11 @@
 \documentclass{article}
 % The LaTeX macro language is complicated, so we have inserted
 % lots of documenting comments into the file.  Comments start
-% with `%' and continue to the end of the line.  In CoCalc's
-% window, they are colored brownish-red.
+% with `%' and continue to the end of the line.  In Overleaf's
+% text editing window, they are colored brownish-red.
 %
 % Comments prefixed with `Student:' are relevant to students.
-% Skip anything else you don't understand, or ask me.
+% Skip anything else you don't understand, or ask your instructor.
 %
 % set font encoding for PDFLaTeX or XeLaTeX
 \usepackage{ifxetex}
@@ -155,8 +155,8 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 % Student: put your answer between the next two lines.
 \begin{solution}
     \begin{enumerate}
-    \item Suppose that $x$ and $y$ are both odd.  Then, there exist integers $m, n$ such that $x = 2m + 1$ and $y = 2n +1$.  Therefore, $x-y = (2m + 1) - (2n+1) = 2(m-n)$.  This means that $2|x-y$.  Therefore, $x \equiv y (\text{mod } 2)$.
-    \item Suppose that $x$ and $y$ are both even.  Then, there exist integers $m, n$ such that $x = 2m$ and $y = 2n$.  Therefore, $x-y = 2m - 2n = 2(m-n)$.  This means that $2|x-y$.  Therefore, $x \equiv y (\text{mod } 2)$.
+    \item Suppose that $x$ and $y$ are both odd.  Then, there exist integers $m, n$ such that $x = 2m + 1$ and $y = 2n +1$.  Therefore, $x-y = (2m + 1) - (2n+1) = 2(m-n)$.  This means that $2\mid(x-y)$.  Therefore, $x \equiv y \pmod{2}$.
+    \item Suppose that $x$ and $y$ are both even.  Then, there exist integers $m, n$ such that $x = 2m$ and $y = 2n$.  Therefore, $x-y = 2m - 2n = 2(m-n)$.  This means that $2\mid(x-y)$.  Therefore, $x \equiv y \pmod{2}$.
     \end{enumerate}
 \end{solution}
 
@@ -164,7 +164,7 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 \begin{question}
     Consider the set $A = \{0, 1, 2, \dots, 8 \}$. Define a relation $R$ on $A$ by
 	\[
-	a\mathrel{R}b \iff a^2 \equiv b^2 \; [9].
+	a\mathrel{R}b \iff a^2 \equiv b^2 \pmod{9}.
 	\]
 	\begin{enumerate}
 	\item Show that $R$ is an equivalence relation, 
@@ -176,15 +176,16 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\begin{enumerate}
 	\item 
 	\begin{itemize} 
-		\item $ R$ is reflexive since for any $a \in A$, $9 | a^2 - a^2$, so $a^2 \equiv b^2 \; [9]$, i.e. $a \mathrel{R}a$.
-		\item $ R$ is symmetric since for any $a,b \in A$, if $a \mathrel{R}b$, then $9 | a^2 - b^2$, so $9 | - (a^2 - b^2) = b^2 - a^2$, so $b \mathrel{R}a$.
-		\item $ R$ is transitive since for any $a,b, c \in A$, if $a \mathrel{R}b$ and $b \mathrel{R}c$, then $9 | a^2 - b^2$ and $9 | b^2 - c^2$, so 
+		\item $ R$ is reflexive since for any $a \in A$, $9 \mid (a^2 - a^2)$, so $a^2 \equiv b^2 \pmod{9}$, i.e. $a \mathrel{R}a$.
+		\item $ R$ is symmetric since for any $a,b \in A$, if $a \mathrel{R}b$, then $9 \mid (a^2 - b^2)$, so $9 \mid \left(- (a^2 - b^2)\right)$, so $b \mathrel{R}a$.
+		\item $R$ is transitive since for any $a,b, c \in A$, if $a \mathrel{R}b$ and $b \mathrel{R}c$, then $9 \mid (a^2 - b^2)$ and $9 \mid (b^2 - c^2)$, so 
 		\[
-		9 | (a^ 2 - b^2) + (b^2 - c^2) = a^2 - c^2,
+		9 \mid \left[(a^ 2 - b^2) + (b^2 - c^2)\right] 
+		\implies 9 \mid (a^2 - c^2),
 		\]
 		so $a \mathrel{R}c$.
 	\end{itemize}
-	\item Now, $[0]$ contains all $a \in A$ such that $9 | a^2$, which is only true for $a = 0, 3, 6$. Then $[1]$ contains all $a \in A$ such that $9 | a^2 - 1$, which is only true for $a = 1, 8$. Then $[2]$ contains all $a \in A$ such that $9 | a^2 - 4$, which is only true for $a = 2, 7$. Then $[4]$ contains all $a \in A$ such that $9 | a^2 - 16$, which is only true for $a = 4, 5$. We see that we have found all elements, and therefore there are four equivalence classes:
+	\item Now, $[0]$ contains all $a \in A$ such that $9 \mid a^2$, which is only true for $a = 0, 3, 6$. Then $[1]$ contains all $a \in A$ such that $9 \mid (a^2 - 1)$, which is only true for $a = 1, 8$. Then $[2]$ contains all $a \in A$ such that $9 \mid (a^2 - 4)$, which is only true for $a = 2, 7$. Then $[4]$ contains all $a \in A$ such that $9 \mid (a^2 - 16)$, which is only true for $a = 4, 5$. We see that we have found all elements, and therefore there are four equivalence classes:
 		\begin{align*}
 		[0] = [3] &= \{ 0, 3, 6 \} \\
 		[1] = [8] &= \{ 1, 8 \} \\
