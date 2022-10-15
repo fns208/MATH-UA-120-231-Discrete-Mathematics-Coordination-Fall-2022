@@ -1,8 +1,8 @@
 \documentclass{article}
 % The LaTeX macro language is complicated, so we have inserted
 % lots of documenting comments into the file.  Comments start
-% with `%' and continue to the end of the line.  In CoCalc's
-% window, they are colored brownish-red.
+% with `%' and continue to the end of the line.  In Overleaf's
+% window, they are colored green
 %
 % Comments prefixed with `Student:' are relevant to students.
 % Skip anything else you don't understand, or ask me.
@@ -101,7 +101,7 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
     \SetupExSheets{solution/print=true}
 \else
     \danger
- \underline{ \LaTeX  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
   
   Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
     in the document's preamble 
@@ -129,7 +129,7 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
         \fbox{\parbox{\linewidth}{
     	\textbf{Statement:} If $R$ is symmetric and transitive, then $R$ is reflexive.
 
-	\textbf{``Proof'':} Suppose $R$ is symmetric and transitive.  Symmetric means that $x \ R y$ implies $y \ R\ x$.  We apply transitivity to $x \ R \ y$ and $y \ R \ x$ to give $x \ R \ x$.  Therefore, $R$ is reflexive.
+	\textbf{``Proof'':} Suppose $R$ is symmetric and transitive.  Symmetric means that $x\mathrel{R}y$ implies $y \mathrel{R}x$.  We apply transitivity to $x \mathrel{R}y$ and $y \mathrel{R}x$ to give $x \mathrel{R}x$.  Therefore, $R$ is reflexive.
         }}
     \end{enumerate}
 \end{question}
@@ -153,7 +153,7 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 \begin{question}
     Consider the set $A = \{0, 1, 2, \dots, 8 \}$. Define a relation $R$ on $A$ by
 	\[
-	a R b \iff a^2 \equiv b^2 \; [9].
+	a\mathrel{R}b \iff a^2 \equiv b^2 \; [9].
 	\]
 	\begin{enumerate}
 	\item Show that $R$ is an equivalence relation, 
@@ -169,10 +169,10 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
     Are the given relations reflexive? antisymmetric? transitive? Either \textit{prove} generally or \textit{disprove} via 
     counterexample.
     	\begin{enumerate}
-	\item For $x, y \in \Z$,  $x R y \iff |x - y| \leq 2$. 
-	\item  $x R y$ means that $x$ and $y$ have a common prime factor (a prime number that divides both $x$ and $y$), 
+	\item For $x, y \in \Z$,  $x\mathrel{R}y \iff |x - y| \leq 2$. 
+	\item  $x\mathrel{R}y$ means that $x$ and $y$ have a common prime factor (a prime number that divides both $x$ and $y$), 
 	where $x, y \in \Z$.
-	\item For $x, y \in 2^{\Z}$. $x R y \iff x \cap y \neq \emptyset$.
+	\item For $x, y \in 2^{\Z}$. $x\mathrel{R}y \iff x \cap y \neq \emptyset$.
 	\end{enumerate}
 \end{question}
 % Student: put your answer between the next two lines.
