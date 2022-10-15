@@ -71,7 +71,6 @@
 
 % We are creating a command for some common commands.
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\modulo}{\text{mod }}
 
 % This package is for specifying graphics.  It's amazing.
 % Manual at http://texdoc.net/texmf-dist/doc/generic/pgf/pgfmanual.pdf
@@ -153,7 +152,7 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 \begin{question}
     Consider the set $A = \{0, 1, 2, \dots, 8 \}$. Define a relation $R$ on $A$ by
 	\[
-	a\mathrel{R}b \iff a^2 \equiv b^2 \; [9].
+	a\mathrel{R}b \iff a^2 \equiv b^2 \pmod{9}.
 	\]
 	\begin{enumerate}
 	\item Show that $R$ is an equivalence relation, 
