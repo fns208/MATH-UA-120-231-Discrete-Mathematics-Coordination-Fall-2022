@@ -113,11 +113,11 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 \begin{question}
     (Scheinerman, Exercise 14.15:)
     Prove: A relation $R$ on a set $A$ is antisymmetric if 
-    \[ R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}. \]
+    \[\mathrel{R}\cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}. \]
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
-Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elements $x, y\in A$ where $(x, y), (y, x) \in R$. Since $(x, y) \in R$, then $(y, x) \in R^{-1}$, and since $(y, x) \in R$, then $(x, y) \in R^{-1}$. This means that $(x, y) \in R\cap R^{-1}$ and $(y, x) \in R\cap R^{-1}$. Since $(x, y) \in R \cap R^{-1}\subseteq \{ (a, a) ~:~ a \in A \}$, then $(x, y) \in \subseteq \{ (a, a) ~:~ a \in A \}$.  This means that $x = y$. Since $(x, y), (y, x) \in R$ implies $x= y$, then $R$ is antisymmetric.
+Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elements $x, y\in A$ where $(x, y), (y, x) \in R$. Since $(x, y) \in R$, then $(y, x) \in R^{-1}$, and since $(y, x) \in R$, then $(x, y) \in R^{-1}$. This means that $(x, y) \in R\cap R^{-1}$ and $(y, x) \in R\cap R^{-1}$. Since $(x, y) \in\mathrel{R}\cap R^{-1}\subseteq \{ (a, a) ~:~ a \in A \}$, then $(x, y) \in \subseteq \{ (a, a) ~:~ a \in A \}$.  This means that $x = y$. Since $(x, y), (y, x) \in R$ implies $x= y$, then $R$ is antisymmetric.
 \end{solution}
 
 
@@ -130,7 +130,7 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
         \fbox{\parbox{\linewidth}{
     	\textbf{Statement:} If $R$ is symmetric and transitive, then $R$ is reflexive.
 
-	\textbf{``Proof'':} Suppose $R$ is symmetric and transitive.  Symmetric means that $x \ R y$ implies $y \ R\ x$.  We apply transitivity to $x \ R \ y$ and $y \ R \ x$ to give $x \ R \ x$.  Therefore, $R$ is reflexive.
+	\textbf{``Proof'':} Suppose $R$ is symmetric and transitive.  Symmetric means that $x \mathrel{R}y$ implies $y \mathrel{R}x$.  We apply transitivity to $x \mathrel{R}y$ and $y \mathrel{R}x$ to give $x \mathrel{R}x$.  Therefore, $R$ is reflexive.
         }}
     \end{enumerate}
 \end{question}
@@ -164,7 +164,7 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 \begin{question}
     Consider the set $A = \{0, 1, 2, \dots, 8 \}$. Define a relation $R$ on $A$ by
 	\[
-	a R b \iff a^2 \equiv b^2 \; [9].
+	a\mathrel{R}b \iff a^2 \equiv b^2 \; [9].
 	\]
 	\begin{enumerate}
 	\item Show that $R$ is an equivalence relation, 
@@ -176,19 +176,19 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\begin{enumerate}
 	\item 
 	\begin{itemize} 
-		\item $ R$ is reflexive since for any $a \in A$, $9 | a^2 - a^2$, so $a^2 \equiv b^2 \; [9]$, i.e. $a  R a$.
-		\item $ R$ is symmetric since for any $a,b \in A$, if $a  R b$, then $9 | a^2 - b^2$, so $9 | - (a^2 - b^2) = b^2 - a^2$, so $b  R a$.
-		\item $ R$ is transitive since for any $a,b, c \in A$, if $a  R b$ and $b  R c$, then $9 | a^2 - b^2$ and $9 | b^2 - c^2$, so 
+		\item $ R$ is reflexive since for any $a \in A$, $9 | a^2 - a^2$, so $a^2 \equiv b^2 \; [9]$, i.e. $a \mathrel{R}a$.
+		\item $ R$ is symmetric since for any $a,b \in A$, if $a \mathrel{R}b$, then $9 | a^2 - b^2$, so $9 | - (a^2 - b^2) = b^2 - a^2$, so $b \mathrel{R}a$.
+		\item $ R$ is transitive since for any $a,b, c \in A$, if $a \mathrel{R}b$ and $b \mathrel{R}c$, then $9 | a^2 - b^2$ and $9 | b^2 - c^2$, so 
 		\[
 		9 | (a^ 2 - b^2) + (b^2 - c^2) = a^2 - c^2,
 		\]
-		so $a  R c$.
+		so $a \mathrel{R}c$.
 	\end{itemize}
 	\item Now, $[0]$ contains all $a \in A$ such that $9 | a^2$, which is only true for $a = 0, 3, 6$. Then $[1]$ contains all $a \in A$ such that $9 | a^2 - 1$, which is only true for $a = 1, 8$. Then $[2]$ contains all $a \in A$ such that $9 | a^2 - 4$, which is only true for $a = 2, 7$. Then $[4]$ contains all $a \in A$ such that $9 | a^2 - 16$, which is only true for $a = 4, 5$. We see that we have found all elements, and therefore there are four equivalence classes:
 		\begin{align*}
 		[0] = [3] &= \{ 0, 3, 6 \} \\
-		[1] = [8] &= \{ 1, 8 \}
-		[2] = [7] &= \{ 2, 7 \}
+		[1] = [8] &= \{ 1, 8 \} \\
+		[2] = [7] &= \{ 2, 7 \} \\
 		[4] = [5] &= \{ 4, 5 \}
 		\end{align*}
 	\end{enumerate}
@@ -199,10 +199,10 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
     Are the given relations reflexive? antisymmetric? transitive? Either \textit{prove} generally or \textit{disprove} via 
     counterexample.
     	\begin{enumerate}
-	\item For $x, y \in \Z$,  $x R y \iff |x - y| \leq 2$. 
-	\item  $x R y$ means that $x$ and $y$ have a common prime factor (a prime number that divides both $x$ and $y$), 
+	\item For $x, y \in \Z$,  $x\mathrel{R}y \iff |x - y| \leq 2$. 
+	\item  $x\mathrel{R}y$ means that $x$ and $y$ have a common prime factor (a prime number that divides both $x$ and $y$), 
 	where $x, y \in \Z$.
-	\item For $x, y \in 2^{\Z}$. $x R y \iff x \cap y \neq \emptyset$.
+	\item For $x, y \in 2^{\Z}$. $x\mathrel{R}y \iff x \cap y \neq \emptyset$.
 	\end{enumerate}
 \end{question}
 % Student: put your answer between the next two lines.
@@ -211,22 +211,22 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\item
 \begin{itemize}
 		\item $ R$ is reflexive since for any $x \in \Z$, $|x-x|  = 0 \leq 2$.
-		\item $ R$ is not antisymmetric. Take $x = 0$ and $y = 1$. Then clearly $x  R y$ and $y  R x$, but $x \neq y$.
-		\item $ R$ is not transitive. Indeed, take $x = 0$, $y = 2$, and $z = 4$. Then clearly $x  R y$ and $y  R z$, but $x$ and $z$ are not related.
+		\item $ R$ is not antisymmetric. Take $x = 0$ and $y = 1$. Then clearly $x \mathrel{R}y$ and $y \mathrel{R}x$, but $x \neq y$.
+		\item $ R$ is not transitive. Indeed, take $x = 0$, $y = 2$, and $z = 4$. Then clearly $x \mathrel{R}y$ and $y \mathrel{R}z$, but $x$ and $z$ are not related.
 	\end{itemize}
 	
 	\item 
 	\begin{itemize}
 		\item $ R$ is not reflexive, since for instance $1$ does not have a prime factor.
-		\item $ R$ is not antisymmetric. Indeed, take $x = 2$ and $y = 4$. Then $x$ and $y$ have a common prime factor 2, so $x  R y$ and $y  R x$, but $x \neq y$.
-		\item $ R$ is not transitive. Indeed, take $x = 2$, $y = 6$, and $z = 3$. Then $x  R y$ since $x$ and $y$ both have the prime factor 2, and $y  R z$ since $y$ and $z$ both have the prime factor 3, but $x$ and $z$ do not have a prime factor.
+		\item $ R$ is not antisymmetric. Indeed, take $x = 2$ and $y = 4$. Then $x$ and $y$ have a common prime factor 2, so $x \mathrel{R}y$ and $y \mathrel{R}x$, but $x \neq y$.
+		\item $ R$ is not transitive. Indeed, take $x = 2$, $y = 6$, and $z = 3$. Then $x \mathrel{R}y$ since $x$ and $y$ both have the prime factor 2, and $y \mathrel{R}z$ since $y$ and $z$ both have the prime factor 3, but $x$ and $z$ do not have a prime factor.
 	\end{itemize}
 	
 	\item 
 	\begin{itemize}
 		\item $ R$ is not reflexive, since $\emptyset \cap \emptyset = \emptyset$.
 		\item $ R$ is not antisymmetric. Indeed, take $x = \{ 0 \}$ and $y = \{0,1\}$. Then $x \cap y = \{0 \} \neq \emptyset$, but $x \neq y$.
-		\item $ R$ is not transitive. Indeed, take $x = \{ 0 \}$, $y = \{0,1\}$, and $z = \{1\}$. Then clearly $x  R y$ and $y  R z$, but $x$ and $z$ are not related.
+		\item $ R$ is not transitive. Indeed, take $x = \{ 0 \}$, $y = \{0,1\}$, and $z = \{1\}$. Then clearly $x \mathrel{R}y$ and $y \mathrel{R}z$, but $x$ and $z$ are not related.
 	\end{itemize}
      \end{enumerate}
 \end{solution}
@@ -240,8 +240,8 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 % Student: put your answer between the next two lines.
 \begin{solution}
     \begin{itemize}
-    \item[($\Rightarrow$)] Suppose that $a \in [b]$.  This means that $a R b$.  By symmetry (since $R$ is an equivalence relation), $b R a$.  Therefore, $b \in [a]$.
-    \item[($\Leftarrow$)] Suppose that $b \in [a]$.  This means that $b R a$.  By symmetry (since $R$ is an equivalence relation), $a R b$.  Therefore, $a \in [b]$.
+    \item[($\Rightarrow$)] Suppose that $a \in [b]$.  This means that $a\mathrel{R}b$.  By symmetry (since $R$ is an equivalence relation), $b\mathrel{R}a$.  Therefore, $b \in [a]$.
+    \item[($\Leftarrow$)] Suppose that $b \in [a]$.  This means that $b\mathrel{R}a$.  By symmetry (since $R$ is an equivalence relation), $a\mathrel{R}b$.  Therefore, $a \in [b]$.
     \end{itemize}
 \end{solution}
 
