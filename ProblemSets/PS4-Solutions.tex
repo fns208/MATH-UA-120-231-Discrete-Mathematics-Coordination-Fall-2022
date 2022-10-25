@@ -163,6 +163,14 @@ Therefore, it must be the case that if $|A \cup B | = |A| + |B|$, then $A \cap B
 \end{solution}
 
 \begin{question}
+    Show that $\sqrt{p}$ is irrational when $p$ is prime. (\textit{Hint: You should use the fact: for $n\in \Z$, if $q$ is prime and $q\mid n^2$, then $q\mid n$.})
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+For the sake of contradiction, assume $\sqrt{p}$ is rational. Then there exist nonzero integers $a$ and $b$ such that $\sqrt{p}=\frac{a}{b}$, where $a$ and $b$ have no common factors greater than 1. Then $p=\frac{a^2}{b^2}$, which implies $a^2 = pb^2$. Then $p\mid a^2$, which implies $p\mid a$, since $p$ is prime. There exists an integer $k$ such that $a=kp$. Then $a^2 = k^2p^2= pb^2$ gives us $pk^2 = b^2$. Then $p\mid b^2$, which implies $p\mid b$. Then $p$ is a common factor of $a$ and $b$ and $p>1$, which is a contradiction. Therefore, $\sqrt{p}$ is irrational.
+\end{solution}
+
+\begin{question}
     (Scheinerman, Exercise 21.7:) 
     The inequality $F_n > 1.6^n$ is true for all $n$ that are large enough.  Do some calculations to find out for what values of $n$ this inequality holds.  Then, prove your assertion using contradiction and smallest counterexample.
 
@@ -175,19 +183,11 @@ By trial and error, we conjecture (a.k.a. ``we make an educated guess'') that fo
 
 Now, we prove this conjecture.
 
-\begin{itemize}
-\item Suppose, to the contrary, that there are integers $n$ for which $F_n \leq 1.6^n$.
-\item By the well-ordering principle, there is a smallest integer, call it $k$ for which $F_k \leq 1.6^k$.
-\item Note that $k \neq 29$: $F_{29} = 832040 > 830768 > 1.6^{29}$.  
-
-In fact, $k \neq 30$ either: $F_{30} = 1346269 > 1329228 > 1.6^{30}$
-
-Therefore, $k \geq 31$. 
-\item Since $k-1 \geq 30 \geq 29$ and since $k-1$ is smaller than $k$, then the statement must be true for $n = k-1$:
+Suppose, to the contrary, that there are integers $n$ for which $F_n \leq 1.6^n$. By the well-ordering principle, there is a smallest integer, call it $k$ for which $F_k \leq 1.6^k$. Note that $k \neq 29$: $F_{29} = 832040 > 830768 > 1.6^{29}$.  In fact, $k \neq 30$ either: $F_{30} = 1346269 > 1329228 > 1.6^{30}$. Therefore, $k \geq 31$. Since $k-1 \geq 30 \geq 29$ and since $k-1$ is smaller than $k$, then the statement must be true for $n = k-1$:
 \begin{equation} F_{k-1} > 1.6^{k-1}. \label{2}\end{equation}
 Furthermore, $k-2 \geq 29$ and since $k-2$ is also smaller than $k$, then the statement is also true for $n = k-2$:
 \begin{equation} F_{k-2} > 1.6^{k-2}. \label{3} \end{equation}
-\item  Next, consider $k$ again.  We know that $F_{k} = F_{k-1} + F_{k-2}$.  Using this, and equations \eqref{2} and \eqref{3}:
+ Next, consider $k$ again.  We know that $F_{k} = F_{k-1} + F_{k-2}$.  Using this, and equations \eqref{2} and \eqref{3}:
 \begin{eqnarray*}
 F_k & = & F_{k-1} + F_{k-2} \\
 	& > & 1.6^{k-1} + 1.6^{k-2} \hspace{2cm} (\text{by \eqref{2} and \eqref{3}})\\
@@ -196,53 +196,31 @@ F_k & = & F_{k-1} + F_{k-2} \\
 	& > & 1.6^{k-1} (1.6) = 1.6^{k},
 \end{eqnarray*}
 which is a contradiction!
-\item Therefore, it must be the case that $F_n > 1.6^n$ for all integers $n \geq 29$.\\~\\
-\end{itemize}
+Therefore, it must be the case that $F_n > 1.6^n$ for all integers $n \geq 29$.
 \end{solution}
 
-\begin{question}{20}
+\begin{question}
     (Scheinerman, Exercise 22.4:) 
-    Prove the following by induction.  For a positive integer $n$, the $n$th derivative of $x^n$ is $n!$; that is $ \displaystyle \frac{d^n}{dx^n} x^n = n!$.
+    Prove the following by induction.  For a positive integer $n$, $\displaystyle \frac{1}{1\cdot 2} + \frac{1}{2 \cdot 3} + \ldots + \frac{1}{n(n+1)} = 1 - \frac{1}{n+1}$.
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
    \begin{description}
-    \item[Base Case: ] For $n = 1$, the first derivative of $x^1$ is $1 = 1!$.  So, the statement is true for $n = 1$.
-    \item[Inductive Hypothesis: ] Consider $n = k$.  Suppose that the $k$th derivative of $x^k$ is $k!$.
-    \item[Inductive Step: ] Consider $n = k+1$.  The first derivative of $x^{k+1}$ is $(k+1)x^k$, by the power rule.  Then, the $k+1$th derivative of $x^{k+1}$ is the $k$th derivative of the first derivative of $x^{k+1}$:
+    \item[Base Case: ] Consider $n = 1$.  $LHS = \frac{1}{1 \cdot 2} = \frac{1}{2}$.  $RHS = 1 - \frac{1}{1+1} = \frac{1}{2}$. So, $LHS = RHS$; the statement is true for $n =1$.
+    \item[Inductive Hypothesis: ] Suppose the statement is true for $n = k$, for some positive integer $k \geq 1$:
+    \[ \frac{1}{1\cdot 2} + \ldots + \frac{1}{k(k+1)} = 1 - \frac{1}{k+1}. \]
+    \item[Inductive Step: ] Consider $n = k+1$.
     \begin{eqnarray*}
-    \frac{d^{k+1}}{dx^{k+1}} x^{k+1} & = & \frac{d^k}{dx^k}\left[ \frac{d}{dx} x^{k+1}\right] \\
-	& = & \frac{d^k}{dx^k}\left[ (k+1) x^k\right] \\
-	& = & (k+1) \frac{d^k}{dx^k}\left[x^k\right] \hspace{1cm} \text{since } \frac{d}{dx} [cf(x)] = c \frac{d}{dx} f(x)\\
-	& = & (k+1) k! \hspace{2.2cm} \text{(by the inductive hypothesis)} \\
-	& = & (k+1)!
-    \end{eqnarray*}
-    So, the statement is true for $n=k+1$.
-    \end{description}
-    Therefore, by the principal of mathematical induction, the statement is true for all positive integers $n$.
-\end{solution}
-
-
-\begin{question}
-    (Scheinerman, Exercise 22.12:) 
-    The Tower of Hanoi is a puzzle consisting of a board with three dowels and a collection of $n$ disks of $n$ different sizes (radii).  The disks have holes drilled through their centers so that they can fit on the dowels on the board.  Initially all disks are on the first dowel and tare arranged in size order (from the largest on the bottom to the smallest on the top).
-
-    The object is to move all the disks to another dowel in as few moves as possible.  Each move consists of taking the top disk off one of the stacks and placing it on another stack, with the added condition that you may not place a larger disk atop a smaller one.  The figure in ``Lecture 9 Worksheet'' shows how to solve the Tower of Hanoi in seven moves when $n = 3$.
-    
-    \textbf{Prove:}  For every positive integer $n$, the Tower of Hanoi puzzle with $n$ disks can be solved in $2^n-1$ moves.
-\end{question}
-% Student: put your answer between the next two lines.
-	\begin{solution}(By induction)
-	\begin{description}
-	\item[Base Case: ]  Consider $n= 1$.  To move one disk from the first peg to another peg (say the second peg), $1$ move is needed.  Since $1 = 2^1 -1$, then the statement is true for $n=1$.
-	\item[Inductive Hypothesis: ] Suppose that for $n = k$, where $k$ is some positive integer greater than $1$, we need $2^k - 1$ moves to move the $k$ disks from the first peg to another peg, maintaining that no larger disk is placed atop a smaller one.
-	\item[Inductive Step: ] Consider $n = k+1$.  We can move the top $k$ disks from the first peg to the third peg in $2^k-1$ moves, maintaining that no larger disk is placed atop a smaller one, by the inductive hypothesis.  
-
-	Then, in one move, we can move the largest disk to the second peg.  Finally, we can move the $k$ disks currently on the third peg to the second peg (on top of the largest disk) in $2^k-1$ moves, maintaining that no larger disk is placed atop a smaller one, again due to the inductive hypothesis.
-
-	Thus, we have moved the $n = k+1$ disks from the first to the second peg in\\ $(2^k-1) + 1 + (2^k-1) = 2\times 2^k -1 = 2^{k+1} - 1$ moves.  So, the statement is true for $n = k+1$.
-	\end{description}
-	Therefore, by the principal of mathematical induction, for any positive integer $n$, the number of moves needed to move $n$ disks from one peg to another, maintaining that no larger disk is placed atop a smaller one, is $2^n - 1$.
+    LHS & = & \frac{1}{1\cdot 2} + \ldots + \frac{1}{k(k+1)} + \frac{1}{(k+1)(k+2)} \\
+   & = & \left(1 - \frac{1}{k+1}\right) + \frac{1}{(k+1)(k+2)} \hspace{1cm}\text{(by the induction hypothesis)} \\
+   & = & \frac{k}{k+1} \times \frac{k+2}{k+2} + \frac{1}{(k+1)(k+2)} \\
+   & = & \frac{k^2 + 2k + 1}{(k+1)(k+2)} = \frac{(k+1)^2}{(k+1)(k+2)} \\
+   & = & \frac{k+1}{k+2} = \frac{(k+2) - 1}{k+2} \\
+   & = & 1 - \frac{1}{k+2} = RHS.
+  \end{eqnarray*}
+  Therefore, the statement is also true for $n = k+1$.
+  \end{description}
+  Therefore, by the principal of mathematical induction, the statement is true for all positive integers $n$.
 \end{solution}
 
 
