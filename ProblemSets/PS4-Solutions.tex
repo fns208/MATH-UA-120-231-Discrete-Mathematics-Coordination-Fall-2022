@@ -1,0 +1,374 @@
+\documentclass{article}
+% The LaTeX macro language is complicated, so we have inserted
+% lots of documenting comments into the file.  Comments start
+% with `%' and continue to the end of the line.  In Overleaf's
+% window, they are colored green
+%
+% Comments prefixed with `Student:' are relevant to students.
+% Skip anything else you don't understand, or ask me.
+%
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% Student: These lines describe some document metadata.
+\title{Problem Set 4}
+\author{%
+% Student: change the next line to your name!
+    Name
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due November 11, 2022 at 11:00pm}
+
+
+\usepackage[headings=runin-fixed-nr]{exsheets}
+% These make enumerates within questions start at the second ("(a)") level, rather than the first ("1.") level.
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+% Student: replace `false' with `true' to typeset your solutions.
+% Otherwise they are ignored!
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+
+% We are creating a command for some common commands.
+\newcommand{\Z}{\mathbb{Z}}
+
+% This package is for specifying graphics.  It's amazing.
+% Manual at http://texdoc.net/texmf-dist/doc/generic/pgf/pgfmanual.pdf
+\usepackage{tikz}
+
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+% This is the beginning of the part of the file that describes
+% the text of the document.
+% That's why it says `\begin{document}' below. :-)
+\begin{document}
+\maketitle
+
+
+
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+
+
+
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+
+\section*{Assigned Problems}
+
+\begin{question}
+    Prove the following statement by contrapositive: \\
+    For all $n\in \mathbb{N}$, if $2^n<n!$, then $n>3$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+We will prove the contrapositive of the statement; that is, for all $n\in \mathbb{N}$, if $n\leq 3$, then $2^n\geq n!$. Since there are only four natural numbers where $n\leq 3$, we only need to prove for the case when $n=0, 1, 2, 3$.
+\begin{itemize}
+\item When $n=0, 1 = 2^0 \geq 0!=1.$
+\item When $n=1, 2 = 2^1 \geq 1!=1.$
+\item When $n=2, 4 = 2^2 \geq 2!=2.$
+\item When $n=3, 8 = 2^3 \geq 3!=6.$
+\end{itemize}
+Since the contrapositive is true, the statement holds.
+\end{solution}
+
+
+\begin{question}
+    Prove the following statement by contradiction:\\
+    There exists no integers $a$ and $b$ for which $21a + 30b = 1$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+Suppose, for the sake of contradiction, that there are some integers $a$ and $b$ such that $21a + 30b = 1$. That is,
+	\[ 3(7a) + 3(10)b = 1. \]
+Since $3|(21a+30b)$ and $21a + 30b = 1$, then $3|1$. Contradiction! Our assumption must have been wrong. Therefore, there are no integers $a$ and $b$ for which $21a + 30b = 1$.
+\end{solution}
+
+
+
+
+\begin{question}
+    (Scheinerman, Exercise 20.15:)
+    Prove the following statement by contradiction:\\ Let $A$ and $B$ be sets.  Prove that if $|A \cup B| = |A| + |B|$, then $A\cap B = \emptyset$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+Suppose that $A$ and $B$ are sets and $|A \cup B | = |A| + |B|$.
+
+That is, the number of elements in $A \cup B$ is the same as the number of elements in set $A$ plus the number of elements in $B$. 
+Suppose to the contrary, that $A \cap B \neq \emptyset$. 
+Then, there is some element $x \in A \cap B$.  This means that $x \in A$ and $x \in B$.  Furthermore, $x \in A \cup B$ as well. 
+Note that the number of elements that are either in $A$ or $B$ (or both), except for $x$ is
+\[ |(A \cup B) - \{x\}| = |A \cup B| - 1. \]
+On the other hand, the number of elements that are either in $A$ or $B$ (or both), except for $x$ is: ~~ the number of elements in $A$ other than $x$ + the number of elements in $B$ other than $x$:
+\begin{eqnarray*}
+|A - \{x\}| + |B - \{x\}| & = & (|A| - 1) + (|B| - 1) \\
+	& = & |A| + |B| - 2 \\
+	& = & |A \cup B| - 2 \neq |A \cup B| - 1.  ~~~ (\Rightarrow\Leftarrow)
+\end{eqnarray*}
+Therefore, it must be the case that if $|A \cup B | = |A| + |B|$, then $A \cap B = \emptyset$.
+\end{solution}
+
+\begin{question}
+    (Scheinerman, Exercise 21.7:) 
+    The inequality $F_n > 1.6^n$ is true for all $n$ that are large enough.  Do some calculations to find out for what values of $n$ this inequality holds.  Then, prove your assertion using contradiction and smallest counterexample.
+
+    (Note: you want to prove a statement of the form: ``For all integers $n \geq N$, $F_n > 1.6^n$.''  Your task is to first figure out what number $N$ should be.)\\~\\
+    \textit{Hint: $N=29$.}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+By trial and error, we conjecture (a.k.a. ``we make an educated guess'') that for all $n \geq 29$, $F_n > 1.6^n$.
+
+Now, we prove this conjecture.
+
+\begin{itemize}
+\item Suppose, to the contrary, that there are integers $n$ for which $F_n \leq 1.6^n$.
+\item By the well-ordering principle, there is a smallest integer, call it $k$ for which $F_k \leq 1.6^k$.
+\item Note that $k \neq 29$: $F_{29} = 832040 > 830768 > 1.6^{29}$.  
+
+In fact, $k \neq 30$ either: $F_{30} = 1346269 > 1329228 > 1.6^{30}$
+
+Therefore, $k \geq 31$. 
+\item Since $k-1 \geq 30 \geq 29$ and since $k-1$ is smaller than $k$, then the statement must be true for $n = k-1$:
+\begin{equation} F_{k-1} > 1.6^{k-1}. \label{2}\end{equation}
+Furthermore, $k-2 \geq 29$ and since $k-2$ is also smaller than $k$, then the statement is also true for $n = k-2$:
+\begin{equation} F_{k-2} > 1.6^{k-2}. \label{3} \end{equation}
+\item  Next, consider $k$ again.  We know that $F_{k} = F_{k-1} + F_{k-2}$.  Using this, and equations \eqref{2} and \eqref{3}:
+\begin{eqnarray*}
+F_k & = & F_{k-1} + F_{k-2} \\
+	& > & 1.6^{k-1} + 1.6^{k-2} \hspace{2cm} (\text{by \eqref{2} and \eqref{3}})\\
+	& = & 1.6^{k-1} (1 + \frac{1}{1.6}) \\
+	& = & 1.6^{k-1} (1 + 0.625) \\
+	& > & 1.6^{k-1} (1.6) = 1.6^{k},
+\end{eqnarray*}
+which is a contradiction!
+\item Therefore, it must be the case that $F_n > 1.6^n$ for all integers $n \geq 29$.\\~\\
+\end{itemize}
+\end{solution}
+
+\begin{question}{20}
+    (Scheinerman, Exercise 22.4:) 
+    Prove the following by induction.  For a positive integer $n$, the $n$th derivative of $x^n$ is $n!$; that is $ \displaystyle \frac{d^n}{dx^n} x^n = n!$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+   \begin{description}
+    \item[Base Case: ] For $n = 1$, the first derivative of $x^1$ is $1 = 1!$.  So, the statement is true for $n = 1$.
+    \item[Inductive Hypothesis: ] Consider $n = k$.  Suppose that the $k$th derivative of $x^k$ is $k!$.
+    \item[Inductive Step: ] Consider $n = k+1$.  The first derivative of $x^{k+1}$ is $(k+1)x^k$, by the power rule.  Then, the $k+1$th derivative of $x^{k+1}$ is the $k$th derivative of the first derivative of $x^{k+1}$:
+    \begin{eqnarray*}
+    \frac{d^{k+1}}{dx^{k+1}} x^{k+1} & = & \frac{d^k}{dx^k}\left[ \frac{d}{dx} x^{k+1}\right] \\
+	& = & \frac{d^k}{dx^k}\left[ (k+1) x^k\right] \\
+	& = & (k+1) \frac{d^k}{dx^k}\left[x^k\right] \hspace{1cm} \text{since } \frac{d}{dx} [cf(x)] = c \frac{d}{dx} f(x)\\
+	& = & (k+1) k! \hspace{2.2cm} \text{(by the inductive hypothesis)} \\
+	& = & (k+1)!
+    \end{eqnarray*}
+    So, the statement is true for $n=k+1$.
+    \end{description}
+    Therefore, by the principal of mathematical induction, the statement is true for all positive integers $n$.
+\end{solution}
+
+
+\begin{question}
+    (Scheinerman, Exercise 22.12:) 
+    The Tower of Hanoi is a puzzle consisting of a board with three dowels and a collection of $n$ disks of $n$ different sizes (radii).  The disks have holes drilled through their centers so that they can fit on the dowels on the board.  Initially all disks are on the first dowel and tare arranged in size order (from the largest on the bottom to the smallest on the top).
+
+    The object is to move all the disks to another dowel in as few moves as possible.  Each move consists of taking the top disk off one of the stacks and placing it on another stack, with the added condition that you may not place a larger disk atop a smaller one.  The figure in ``Lecture 9 Worksheet'' shows how to solve the Tower of Hanoi in seven moves when $n = 3$.
+    
+    \textbf{Prove:}  For every positive integer $n$, the Tower of Hanoi puzzle with $n$ disks can be solved in $2^n-1$ moves.
+\end{question}
+% Student: put your answer between the next two lines.
+	\begin{solution}(By induction)
+	\begin{description}
+	\item[Base Case: ]  Consider $n= 1$.  To move one disk from the first peg to another peg (say the second peg), $1$ move is needed.  Since $1 = 2^1 -1$, then the statement is true for $n=1$.
+	\item[Inductive Hypothesis: ] Suppose that for $n = k$, where $k$ is some positive integer greater than $1$, we need $2^k - 1$ moves to move the $k$ disks from the first peg to another peg, maintaining that no larger disk is placed atop a smaller one.
+	\item[Inductive Step: ] Consider $n = k+1$.  We can move the top $k$ disks from the first peg to the third peg in $2^k-1$ moves, maintaining that no larger disk is placed atop a smaller one, by the inductive hypothesis.  
+
+	Then, in one move, we can move the largest disk to the second peg.  Finally, we can move the $k$ disks currently on the third peg to the second peg (on top of the largest disk) in $2^k-1$ moves, maintaining that no larger disk is placed atop a smaller one, again due to the inductive hypothesis.
+
+	Thus, we have moved the $n = k+1$ disks from the first to the second peg in\\ $(2^k-1) + 1 + (2^k-1) = 2\times 2^k -1 = 2^{k+1} - 1$ moves.  So, the statement is true for $n = k+1$.
+	\end{description}
+	Therefore, by the principal of mathematical induction, for any positive integer $n$, the number of moves needed to move $n$ disks from one peg to another, maintaining that no larger disk is placed atop a smaller one, is $2^n - 1$.
+\end{solution}
+
+
+
+
+
+% R. Johnsonbaugh 7ed
+% Sec 2.5 Q. 2
+\begin{question}
+    Show that postage of 24-cents or more can be achieved by using only 5-cent and 7-cent stamps.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+	\begin{description}
+	\item[Base Cases: ] Note that the statement is true for $n=24, \dots, 28$.
+	\begin{itemize}
+	\item If $n=24$, note that $24 = 2 (7) + 2(5).$
+	\item If $n=25$, note that $25 = 5 (5).$
+	\item If $n=26$, note that $26 = 3 (7) + 5$.
+	\item If $n=27$, note that $27 = 1 (7) + 4(5).$
+	\item If $n=28$, note that $28 = 4 (7).$
+	\end{itemize}
+	
+	\item[Inductive Hypothesis: ] Assume that for $k\geq 28$ and postage of $n$-cents or more can be achieved using only 5-cents and 7-cents for $24\leq n\leq k$.
+	
+	\item[Inductive Step: ] Consider $n=k+1$.  Since $k-4\geq 24$, postage of $(k-1)$-cents can be achieved using only 5-cents and 7-cents. Observe that 
+	\[ k+1 = (k-4)+5.\]
+	We just need to add an additional one 5-cent stamp to achieve a $(k+1)$-cents postage.
+	\end{description}
+	Therefore, by strong induction, any postage of 24-cents or more can be achieved by using only 5-cent and 7-cent stamps.
+\end{solution}
+
+\begin{question}
+    (Scheinerman, Exercise 22.24:)
+    Use strong induction to show that every natural number can be expressed as the sum of distinct powers of $2$.  (For example, $21 = 2^0 + 2^2 + 2^ 4$.)
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}(By strong induction)
+	\begin{description}
+	\item[Base Cases: ] $n = 0 = 0 \times 2^0$;\\$n = 1 = 1 \times 2^0$;\\$n=2 = 1 \times 2^1$
+	\item[Inductive Hypothesis: ] Suppose that for some integer $k \geq 2$, all natural numbers less than or equal to $k$ can be expressed as the sum of distinct powers of 2.
+	\item[Inductive Step: ] Consider $n = k+1$.  We consider the cases when $n$ is odd and when $n$ is even.
+	\begin{itemize}
+	\item Case 1: Suppose that $n = k+1$ is odd.  Then, $n-1$ is a natural number less than or equal to $k$ and can be written as a sum of distinct powers of 2, by the induction hypothesis.
+
+	Since $n$ is odd, then $n-1 = k$ is even.  Note that all powers of 2 are even with the exception of $2^0$.  Therefore, it must be the case that \[k = 0 \times 2^0 + c_1 \times 2^1 + \ldots + c_\ell 2^\ell,\] for some $\ell \in \mathbb{N}$, where each of $c_1, \ldots, c_\ell$ is either 0 or 1.
+
+	Therefore,
+	\begin{eqnarray*}
+	n = k + 1 & = & (0 \times 2^0 + c_1 2^1 + \ldots + c_\ell 2^\ell) + 1 \\
+		& = & (0 \times 2^0 + c_1 2^1 + \ldots + c_\ell 2^\ell) + 1 \times 2^0 \\
+		& = & 1 \times 2^0 + c_1 2^1 + \ldots + c_\ell 2^\ell.
+	\end{eqnarray*}
+	Therefore, $n$ can be written as the sum of distinct powers of 2.
+
+	\item Case 2: Suppose that $n = k+1$ is even.  Then, there is some natural number $a$ such that $n = 2a$.  Note that $a \leq k$.  Therefore, by the induction hypothesis, we can express $a$ as the sum of distinct powers of 2:
+	\[ a = d_0 2^0 + d_1 2^1 + \ldots + d_m 2^m, \]
+	for some $m \in \mathbb{N}$, where each of $d_0, d_1, \ldots, d_m$ is either 0 or 1.
+
+	Therefore,
+	\begin{eqnarray*}
+	n = 2a & = & 2 (d_0 2^0 + d_1 2^1 + \ldots + d_m 2^m) \\
+		& = & d_0 2^1 + d_1 2^2 + \ldots + d_m 2^{m+1}.
+	\end{eqnarray*}
+	Therefore, $n$ can be written as the sum of distinct powers of 2.
+	\end{itemize}
+	\end{description}
+	Therefore, by strong induction, any natural number can be expressed as the sum of distinct powers of 2.
+\end{solution}
+
+% R. Hammack
+% Book of Proof
+% Sec 10.1 Prop 1
+\begin{question}
+    Use strong induction to show if $n\in \mathbb{N}$, then $12 \mid (n^4-n^2)$.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+	\begin{description}
+	\item[Base Cases: ] Note that the statement is true for $n=0, 1, \dots, 5$.
+	\begin{itemize}
+	\item If $n=0$, note that $12$ divides $n^4-n^2=0^4-0^2=0$.
+	\item If $n=1$, note that $12$ divides $n^4-n^2=1^4-1^2=0$.
+	\item If $n=2$, note that $12$ divides $n^4-n^2=2^4-2^2=12$.
+	\item If $n=3$, note that $12$ divides $n^4-n^2=3^4-3^2=72$.
+	\item If $n=4$, note that $12$ divides $n^4-n^2=4^4-4^2=240$.
+	\item If $n=5$, note that $12$ divides $n^4-n^2=5^4-5^2=600$.
+%	\item If $n=6$, note that $12$ divides $n^4-n^2=6^4-6^2=1260$.
+	\end{itemize}
+	
+	\item[Inductive Hypothesis: ] Let $k\geq 5$. Assume that for all integers $n$ where $0\leq n\leq k$, $12\mid (n^4-n^2)$.
+	
+	\item[Inductive Step: ] Consider $n=k+1$.  We want to show $12|([k+1]^4-[k+1]^2)$. Since $k\geq 5$, $k-5\geq 0$. By the inductive assumption, $12 \mid ([k-5]^4-[k-5]^2)$. For simplicity, let $m=k-5$. Then we have $12\mid (m^4-m^2)$; that is, $m^4-m^2=12a$ for some $a\in \Z$. Observe that
+	\begin{align*}
+	(k+1)^4-(k+1)^2 & = (m+6)^4-(m+6)^2\\
+				& = m^4+24m^3+216m^2+864m+1296 - (m^2+12m+36)\\
+				& = (m^4-m^2) + 24m^3 + 216m^2 + 852m + 1260\\
+				& = 12a + 24m^3 + 216m^2 + 852m + 1260\\
+				& = 12 (a+2m^3+18m^2 +71m +105).
+	\end{align*}
+	Hence, $12\mid ([k+1]^4-[k+1]^2)$.
+	\end{description}
+	Therefore, by strong induction, $12 \mid (n^4-n^2)$ for all $n\in \mathbb{N}$.
+\end{solution}
+
+
+% R. Johnsonbaugh 7ed
+% Sec 2.5 Q. 15
+\begin{question}
+    Suppose that we have two piles of cards each containing $n$ cards. Two players play a game as follows. Each player, in turn, chooses one pile and then removes any number of cards, but at least one, from the chosen pile. The player who removes the last card wins the game. Show that the second player can always win the game.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+	\begin{description}
+	\item[Base Cases: ] Consider $n=1$. The first player removes one card from either pile. The second player then removes the last card and wins the game.
+	
+	\item[Inductive Hypothesis: ] Suppose that $k\geq 1$ and whenever there are two piles of $n$ cards for $1\leq n\leq k$, the second player can always win the game.
+	
+	\item[Inductive Step: ] Suppose there are two piles of $n=k+1$ cards. The first player removes $i$ cards from one of the piles, where $1\leq i\leq k+1$. 
+	\begin{itemize}
+	\item If $i=k+1$ (i.e. the first player removes all of the cards from one pile), the second player can win by removing all of the cards from the remaining pile. 
+	\item If $i<k+1$, the second player removes $i$ cards from the other pile leaving two piles each with $k+1-i$ cards. The game then resumes with the first player facing two piles each with $k+1-i<k+1$ cards. By the inductive assumption, the second player can win the game.
+	\end{itemize}
+	\end{description}
+	Therefore, by strong induction, the second player can always win the game.
+\end{solution}
+
+
+\end{document}
