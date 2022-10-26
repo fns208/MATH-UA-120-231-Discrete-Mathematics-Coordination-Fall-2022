@@ -138,7 +138,9 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 \begin{solution}
     \begin{enumerate}
     \item One possible example among numerous examples: Consider the set $A = \{1, 2, 3\}$.  The relation $R = \{ (1, 1), (1, 2), (2, 1), (2, 2) \}$ is symmetric (if $(x, y) \in R$ then $(y, x) \in R$ as well), transitive ($\forall x, y,z \in A$ where $(x, y)\in R$ and $(y, z) \in R$, then $(x, z) \in R$ also), but not reflexive since $(3, 3) \notin R$.
-    \item To show that a relation is reflexive, we want $(x, x)$ to be in $R$ \underline{for all} $x \in A$.  The proof above says that if $(x, y) \in R$ (which also means that $(y, x)$ is also in $R$) , then it must be the case that $x \in R$ (and $y \in R)$.  
+    
+    A minimal example would be $A = \{1\}$ and $R = \emptyset$. Then $R$ is symmetric and transitive, both vacuously. But $R$ is not symmetric because $(1,1) \notin R$.
+    \item To show that a relation is reflexive, we want $(x, x)$ to be in $R$ \underline{for all} $x \in A$.  The proof above says that if there exist $(x, y) \in R$ (which also means that $(y, x)$ is also in $R$), then it must be the case that $(x,x) \in R$ (and $(y,y) \in R)$.  
 
     However, if an element $z$ does not appear in any pair, then $(z, z) \notin R$ and hence $R$ is not reflexive.
     \end{enumerate}
@@ -187,7 +189,7 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\end{itemize}
 	\item Now, $[0]$ contains all $a \in A$ such that $9 \mid a^2$, which is only true for $a = 0, 3, 6$. Then $[1]$ contains all $a \in A$ such that $9 \mid (a^2 - 1)$, which is only true for $a = 1, 8$. Then $[2]$ contains all $a \in A$ such that $9 \mid (a^2 - 4)$, which is only true for $a = 2, 7$. Then $[4]$ contains all $a \in A$ such that $9 \mid (a^2 - 16)$, which is only true for $a = 4, 5$. We see that we have found all elements, and therefore there are four equivalence classes:
 		\begin{align*}
-		[0] = [3] &= \{ 0, 3, 6 \} \\
+		[0] = [3] = [6] &= \{ 0, 3, 6 \} \\
 		[1] = [8] &= \{ 1, 8 \} \\
 		[2] = [7] &= \{ 2, 7 \} \\
 		[4] = [5] &= \{ 4, 5 \}
