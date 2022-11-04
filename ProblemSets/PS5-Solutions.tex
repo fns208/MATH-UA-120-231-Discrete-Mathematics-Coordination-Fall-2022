@@ -1,0 +1,471 @@
+\documentclass{article}
+% The LaTeX macro language is complicated, so we have inserted
+% lots of documenting comments into the file.  Comments start
+% with `%' and continue to the end of the line.  In Overleaf's
+% window, they are colored green
+%
+% Comments prefixed with `Student:' are relevant to students.
+% Skip anything else you don't understand, or ask me.
+%
+% set font encoding for PDFLaTeX or XeLaTeX
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+% Student: These lines describe some document metadata.
+\title{Problem Set 5}
+\author{%
+% Student: change the next line to your name!
+    Name
+\\  MATH-UA 120 Discrete Mathematics
+}
+\date{due November 18, 2022 at 11:00pm}
+
+
+\usepackage[headings=runin-fixed-nr]{exsheets}
+% These make enumerates within questions start at the second ("(a)") level, rather than the first ("1.") level.
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\SetupExSheets{
+    question/pre-body-hook=\stepenumdepth,
+    solution/pre-body-hook=\stepenumdepth,
+}
+\DeclareInstance{exsheets-heading}{runin-nn-np}{default}{
+    runin = true,
+    title-post-code = .\space,
+    join = {
+        main[r,vc]title[l,vc](0pt,0pt);
+    }
+}
+\newif\ifshowsolutions
+% Student: replace `false' with `true' to typeset your solutions.
+% Otherwise they are ignored!
+\showsolutionstrue
+\ifshowsolutions
+    \SetupExSheets{
+        question/pre-hook=\itshape,
+        solution/headings=runin-nn-np,
+        solution/print=true,
+        solution/name=Answer
+    }%
+    \makeatletter%
+    \pretocmd{\@title}{Answers to }%
+    \makeatother%
+\else
+    \SetupExSheets{solution/print=false}
+\fi
+
+% Bug workaround: http://tex.stackexchange.com/a/146536/1402
+%\newenvironment{exercise}{}{}
+\RenewQuSolPair{question}{solution}
+%\let\answer\solution
+%\let\endanswer\endsolution
+\usepackage{manfnt}
+\newcommand{\danger}{\marginpar[\hfill\dbend]{\dbend\hfill}}
+
+% We are creating a command for some common commands.
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\id}{\operatorname{id}}
+
+% This package is for specifying graphics.  It's amazing.
+% Manual at http://texdoc.net/texmf-dist/doc/generic/pgf/pgfmanual.pdf
+\usepackage{tikz}
+
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts}
+\usepackage{siunitx}
+\DeclareSIUnit\pound{lb}
+\usepackage{hyperref}
+\newtheorem*{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+% This is the beginning of the part of the file that describes
+% the text of the document.
+% That's why it says `\begin{document}' below. :-)
+\begin{document}
+\maketitle
+
+
+
+These are to be written up in \LaTeX{} and turned in to Gradescope.\\
+
+
+
+\ifshowsolutions
+    \SetupExSheets{solution/print=true}
+\else
+    \danger
+ \underline{ \LaTeX{}  Instructions:}  You can view the source (\texttt{.tex}) file to get some more examples of \LaTeX{} code.  I have commented the source file in places where new \LaTeX{} constructions are used.
+  
+  Remember to change \verb|\showsolutionsfalse| to \verb|\showsolutionstrue|
+    in the document's preamble 
+    (between \verb|\documentclass{article}| and \verb|\begin{document}|)
+\fi
+
+\section*{Assigned Problems}
+
+\begin{question}
+    (Scheinerman, Exercise 24.16:) 
+    Let $A$ and $B$ be finite sets and let $f: A \rightarrow B$.  Prove that any two of the following statements being true implies that the third is true:
+	\begin{itemize}
+	\item[I.] $f$ is one-to-one
+	\item[II.] $f$ is onto
+	\item[III.] $|A| = |B|$
+	\end{itemize}
+
+	{\it Hints:}
+	\begin{itemize}
+	\item Your proof will consist of three parts: (1) If I and II are true, then III is true, (2) If I and III are true, then II is true, and (3) If II and III are true, then I is true.
+	\item The pigeonhole principle might help.
+	\end{itemize}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\begin{itemize}
+\item \textbf{(I and II implies III)}\\
+Suppose that $f:A \rightarrow B$ is one-to-one and onto.  By the pigeonhole principle (Prop 24.24's contrapositive), since $f$ is one-to-one, then $|A| \leq |B|$, and since $f$ is one-to-one, then $|A| \geq |B|$.  Therefore, $|A| = |B|$, thereby proving that III must be true.
+
+\item \textbf{(I and III implies II)}\\
+Suppose that $f:A \rightarrow B$ is one-to-one and $|A| = |B|$.  Suppose to the contrary, that $f$ is not onto.  Then, there is $b \in B$ such that $b \notin im \ f$.  So, $im \ f \subseteq B$ but $im \ f \neq B$.  Therefore, $|im \ f| < |B|$.
+
+Note that $f:A \rightarrow im \ f$ is one-to-one and is also onto, by the definition of $im \ f$.  So, $f$ is a bijection between $A$ and $im \ f$.  Therefore, $|A| = |im \ f|$, by Proposition 24.25.
+
+However, this is a contradiction: $|A| = |im \ f| < |B|$, contradicting our supposition that $|A| = |B|$.
+
+Therefore, $f$ must be onto.
+
+\begin{itemize}
+\item \textbf{Alternatively:} Suppose $f:A\to B$ is one-to-one and $|A|=|B|$. Since $f$ is one-to-one, then $f:A\to \im f$ is a bijection. Hence, $|A|=|\im f|\implies |\im f|=|B|$. Since $\im f\subseteq B$, $|\im f|=|B|\implies \im f=B$.
+\end{itemize}
+
+\item \textbf{(II and III implies I)}\\
+Suppose that $f:A \rightarrow B$ is onto and $|A| = |B|$.  Suppose to the contrary, that $f$ is not one-to-one.  Then, there are $a, a' \in A$ (where $a \neq a'$) such that $f(a) = f(a')$.  So, two elements of $A$ maps to one element of $B$.  Since $f$ is onto, this means that the remaining $|A|-2$ elements of $A$ maps to the remaining $|B|-1$ elements of $B$.  However, this means that there is an element of $A$ that maps to more than one elements of $B$. This contradicts the supposition that $f$ is a function.
+
+Therefore, $f$ must be one-to-one.
+
+\begin{itemize}
+\item \textbf{Alternatively:} Suppose $f:A\to B$ is onto and $|A|=|B|$. We want to show $f$ is one-to-one. Let $a_1,a_2\in A$ such that $f(a_1)=f(a_2)$. Since $f:A\to B$ is onto, there exists a one-to-one function $g:B\to A$ such that  $f\circ g=\id_B$. By part 2 of this proof, $g$ must be onto. Then there exists $b_1,b_2\in B$ such that $g(b_1)=a_1$ and $g(b_2)=a_2$. Since $f(a_1)=f(a_2)$, then $f(g(b_1))=f(g(b_2))$. Since $f\circ g=\id_B$, $b_1=b_2$. Since $g$ is a function, $g(b_1)=g(b_2) \implies a_1=a_2$.
+\end{itemize}
+\end{itemize}
+\end{solution}
+
+
+
+
+\begin{question}
+    Suppose $f: A \rightarrow A$ and $g: A \rightarrow A$ are both bijections.
+    \begin{enumerate}
+    \item Prove that $g \circ f$ is a bijection from $A$ to $A$.
+    \item Prove that $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\begin{enumerate}
+    \item Solution not included since this problem will be part of the portfolio.
+    
+    First, note that since $im \ f = A = dom \ g$, then $g \circ f$ is well-defined.  Its domain is $A$ and its image is contained in $A$.
+
+Suppose $f$ and $g$ are one-to-one. Let $a, b\in A$ such that $(g\circ f)(a)=(g\circ f)(b)$. This means $g(f(a))=g(f(b))$. Since $g$ is one-to-one, then $f(a)=f(b)$. Since $f$ is one-to-one, $a=b$. Therefore, $g\circ f$ is one-to-one.
+
+Suppose $f$ and $g$ are onto. Let $c\in A$. Since $g$ is onto, there exists $b\in A$ such that $g(b)=c$. Since $f$ is onto, there exists $a\in A$ such that $f(a)=b$. Then $(g\circ f)(a)=g(f(a))=g(b)=c$. So $g\circ f$ is onto.
+
+  Therefore, $g\circ f$ is both one-to-one and onto.  So, it is a bijection from $A$ to $A$.  
+
+{\color{gray}(Thus, $(g \circ f)^{-1}$ is well-defined.)}
+
+    \item This statement is true.
+\begin{proof}
+Consider an arbitrary $a \in A$.  Suppose that $g^{-1}(a) = b$ and $f^{-1}(b) = c$.  This means that \[ (f^{-1} \circ g^{-1})(a) = f^{-1}(b) = c. \]
+
+Since $g^{-1}(a) = b$ and $f^{-1}(b) = c$, then
+\[ g(b) = a \text{ and } f(c) = b. \]
+Therefore, $(g\circ f)(c) = g(f(c)) = g(b) = a$.  Since $(g\circ f)(a)$, then by the definition of the inverse function, $(g\circ f)^{-1}(a) = c$.
+
+Therefore, for any $a \in A$, 
+	\[(f^{-1} \circ g^{-1})(a) = c = (g \circ f)^{-1}(a),\]
+	\[(f^{-1} \circ g^{-1})=  (g \circ f)^{-1}.\]	
+Therefore, the two functions are equal.
+\end{proof}
+%%[Solution not included since this problem will be part of the portfolio.]
+    \end{enumerate}
+
+\end{solution}
+
+\begin{question}
+    There are five points inside an equilateral triangle of side length 2. Show that at least two of the points are within 1 unit distance from each other.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+Consider dividing the triangle into four equilateral triangles each of side length 1.  If we have five points inside the large triangle, then there will be one small triangle that contains at least two of the points.  Since this triangle has side length 1, then the distance between these two points is less than or equal to 1.  So, two of the points are within one unit distance from each other.
+
+(That is, the points are the ``pigeons'' and the small triangles are the ``pigeonholes''.)
+\end{solution}
+
+
+\begin{question}
+    Let $A = \{ x \in \Z ~:~ 3|x \}$.  Show that $A$ and $\mathbb{N}$ has the same cardinality.  {\it Hint:} construct a function $f: A \rightarrow \mathbb{N}$ (or $f: \mathbb{N} \rightarrow A$) and show that it is one-to-one and onto.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+One example of a function $f: A \rightarrow \N$: Let
+\[ f(x) =\left\{\begin{array}{c c l} \frac{2}{3}x & & \text{if } x \geq 0 \\ ~ \\ -\frac{2}{3}x - 1 &  & \text{if } x < 0 \end{array} \right. \]
+(Note that if $x \geq 0$, then $f(x)$ is even and if $x < 0$, then $f(x)$ is odd.)
+
+\begin{itemize}
+\item We show that $f$ is one-to-one:\\
+Suppose that for $a, a' \in A$, $f(a) = f(a')$.  If $f(a) = f(a')$ is even, then
+\begin{eqnarray*}
+f(a) & = & f(a') \\
+\frac{2}{3} a & = & \frac{2}{3} a' \\
+a & = & a' \hspace{1cm} \text{ divide both sides by } 2/3.
+\end{eqnarray*}
+If $f(a) = f(a')$ is odd, then
+\begin{eqnarray*}
+f(a) & = & f(a') \\
+-\frac{2}{3} a - 1 & = & -\frac{2}{3} a' - 1 \\
+-\frac{2}{3} a & = & -\frac{2}{3} a'\hspace{1cm} \text{ add 1 to both sides }\\
+a & = & a' \hspace{1cm} \text{ divide both sides by } -2/3.
+\end{eqnarray*}
+So, $f$ is one-to-one.
+\item We show that $f$ is onto:\\
+Suppose that $n \in \N$ is even, then let $a = \frac{3n}{2}$.  Then, since $a \geq 0$, 
+\[ f(a) = f(3n/2) = \frac{2}{3} \frac{3n}{2} = n. \]
+If $n \in \N$ is odd, then let $a = -\frac{3(n+1)}{2}$.  Since $a < 0$,
+\[ f(a) = f(-3(n+1)/2) = -\frac{2}{3}\left(-\frac{3(n+1)}{2}\right) - 1 =  n+1 - 1 = n.\]
+So, $f$ is onto.
+
+\end{itemize}
+\end{solution}
+
+
+\begin{question}
+    Let $A$ be the set of all real numbers between $0$ and $1$ just having 1's and 2's in their decimal expansion. Prove that the cardinalities of $A$ and $\mathbb{N}$ are different.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+We will prove this by contradiction. Assume, for the sake of contradiction, that $A$ and $\mathbb{N}$ have the same cardinality. Then there exist a bijection $f:\mathbb{N}\to A$. Let $x\in A$ such that the $(n+1)$-th digit of its decimal expansion is not the same as the $(n+1)$-th digit in the decimal expansion of $f(n)$. Since $x\in A$ and $f$ is a onto, there exists $a\in \mathbb{N}$ such that $f(a)=x$. Since $x\in A$, the $(a+1)$-th digit of its decimal expansion is either 1 or 2.
+	\begin{description}
+	\item[Case 1:] If the $(a+1)$-th digit of $x$'s decimal expansion is a 1, then the $(a+1)$-th digit of $f(a)$ is 2. Since $f(a)=x$, contradiction!
+	\item[Case 2:] If the $(a+1)$-th digit of $x$'s decimal expansion is a 2, then the $(a+1)$-th digit of $f(a)$ is 1. Since $f(a)=x$, contradiction!
+	\end{description}
+	Therefore, there is no $a\in \mathbb{N}$ such that $f(a)=x$. Thus there is no bijection between $A$ and $\mathbb{N}$. Therefore, the cardinalities of $A$ and $\mathbb{N}$ are different.
+\end{solution}
+
+
+\begin{question}
+        A fair coin is flipped 10 times.
+    \begin{enumerate}
+        \item What is the probability that there are an equal number of head and
+            tails?
+        \item What is the probability the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails and the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails or the first three flips are heads (or both)?
+        \item What is the probability that the first three flips are heads given
+            that an equal number of heads and tails are flipped?
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+    \begin{enumerate}
+        \item $\frac{\binom{10}{5}}{2^{10}} = \frac{252}{1024}$.  There are
+            $2^{10}$ outcomes when a fair coin is flipped 10 times.  The number
+            of heads and tails are equal only if 5 heads and 5 tails are
+            flipped.  There are $\binom{10}{5}$ ways to flip exactly 5 heads.
+        \item $\frac{2^7}{2^{10}} = \frac{1}{8}$, since the outcomes of the
+            remaining 7 flips is $2^7$.
+        \item $\frac{\binom{7}{2}}{2^{10}} = \frac{21}{1024}$, since exactly 2
+            heads must be flipped from the remaining 7 flips is denoted by
+        $\binom{7}{2}$.
+        \item Let $A$ be the event exactly 5 heads are tossed.  Let $B$ be the
+            event the first three flips are heads.  By inclusion-exclusion
+            principle, $P(A\cup B) = P(A) + P(B) - P(A\cap B)= \frac{1}{8} +
+            \frac{252}{1024} - \frac{21}{1024} = \frac{359}{1024}$.
+        \item By the definition of conditional probability,
+        \[
+            P(A \mid B) = \frac{P(A \cap B)}{P(B)} = \frac{\frac{21}{1024}}{\frac{252}{1024}} =
+                \frac{21}{252}.
+        \]
+    \end{enumerate}
+\end{solution}
+
+\begin{question}
+    An unfair coin shows heads with probability $p$ and tails with probability
+    $1-p$. Suppose this coin is flipped $2$ times. Let $A$ be the event that the coin comes up first heads and
+    then tails.  Let $B$ be the event that the coin comes up first tails and
+    then heads.
+    \begin{enumerate}
+        \item  Find $P(A)$.
+        \item  Find $P(B)$.
+        \item  Find $P(A \mid A \cup B)$.
+        \item  Find $P(B \mid A \cup B)$.
+    \end{enumerate}
+    Explain how one could use this unfair coin to make a fair decision.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+    \begin{enumerate}
+        \item $p(1-p)$, since the second flip is independent from the first.
+        \item $(1-p)p$, since the second flip is independent from the first.
+        \item Observe that $A \cap B = \emptyset$.  By addition principle, $P(A
+        \cup B) = P(A )+ P(B) = 2p(1-p)$. By the definition of conditional
+        probability,
+            \[
+                P(A \mid A \cup B) = \frac{P(A \cap (A \cup B))}{P(A\cup B)}
+                = \frac{P(A)}{P(A\cup B)} = \frac{p(1-p)}{2p(1-p)} = \frac{1}{2}.
+            \]
+        \item Similarly,
+            \[
+                P(B  \mid  A \cup B) = \frac{P(B \cap (A \cup B))}{P(A\cup B)}
+                    = \frac{P(B)}{P(A\cup B)} = \frac{p(1-p)}{2p(1-p)} = \frac{1}{2}.
+            \]
+    \end{enumerate}
+    We can make a fair decision from an unfair coin as follows:
+    \begin{itemize}
+        \item Flip the coin twice.
+        \item If the results match, start over and flip again.
+        \item If the results differ, use the first result, forgetting the second.
+    \end{itemize}
+    Based on the computations above, we know that given that the results differ
+    (i.e. $A\cup B$), the probability of flipping heads (i.e. event $A$) or
+    tails (i.e. event $B$) at the first toss is the same, making it a ``fair"
+    toss.
+\end{solution}
+
+\begin{question}
+    Suppose that $A$ and $B$ are events in a sample space $(S,P)$.
+    Prove or disprove:
+    \begin{enumerate}
+        \item If $P(A \cap B)=0$, then $P(A\mid B)=P(B\mid A)$ if and only
+            if $P(A)=P(B)$.
+        \item If $P(A)>0, P(B)>0$ but $P(A \cap B)=0$, then $P(A\mid
+            B)=P(B\mid A)$.  If proven, give an example of two such events
+            with $P(A) \ne P(B)$.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+ \textit{Counterexample for (a):}
+    Roll a fair six-sided die and record the numbed faced-up. Let $A$ be the
+    event of rolling $1$ or $2$ and let $B$ be the event of rolling $4$, $5$
+    or $6$.  Observe that $A \cap B = \emptyset$. By the definition of
+    conditional probability, $P(A \mid B) = P(B \mid A) = 0$. On the other
+    hand, $P(A) = \frac{1}{3}$ and $P(B) = \frac{1}{2}$. Since $P(A \mid B)
+    = P(B \mid A) = 0$, but $\frac{1}{3} = P(A) \ne P(B) = \frac{1}{2}$, the
+    statement is false.
+    
+\begin{proof}[Proof of (b)]
+    Suppose that $A$ and $B$ are arbitrary events in a sample space $(S,P)$.
+    Suppose that $P(A)>0, P(B)>0$ and $P(A \cap B)=0$.  By the definition of
+    conditional probability,
+    \[
+        P(A \mid B)P(B) = P(A \cap B) = 0.
+    \]
+    Since $P(B) >0$, it must necessarily hold $P(A\mid B) = 0$.  Similarly,
+    we have that
+    \[
+        P(B\mid A)P(A) = P(A \cap B) = 0
+    \]
+    and since $P(A) >0$, it must be that $P(B\mid A) = 0$. It follows that
+    $P(A \mid B) = 0 = P(B \mid A)$.
+\end{proof}
+\end{solution}
+
+\begin{question}
+    Consider the sample space $S = \{ a, b, c \}$, with equal probability for each outcome. Define the random variables $X$ and  
+    $Y$ by $X(a) = -1, \quad X(b) = 0, \quad X(c) = 1, \quad Y(a) = Y(c) = 0, \quad Y(b) = 1.$ 
+    Check that $\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)$, but that $X$ and $Y$ are not independent.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\begin{enumerate}
+	 \item By assumption, we have $E(X = 3) = 0.6$, $E(X = 5) = 0.3$, and $E(X = 7) = 0.1$, so
+	\[
+	E(X) = 0.6 \times 3 + 0.3 \times 5 + 0.1 \times 7 = 4.
+	\]
+	 Similarly, we get
+	\[
+	E(X^2) = 0.6 \times 3^2 + 0.3 \times 5^2 + 0.1 \times 7^2 = 17.8,
+	\]
+	so
+	\[
+	\mathrm{Var}(X) = E(X^2) - E(X)^2 = 17.8 - 4^2 = 1.8.
+	\]
+	This means you should expect your commute to be 40 mins on average, give or take $\sqrt{18}=4.25$ mins.
+	\item We first have
+	\[
+	E(X = -1) = E(X = 0) = E(X = 1) = 1/3, \quad E(Y = 0) = \frac23, \quad E(Y = 1) = 1/3.
+	\]
+	We deduce
+	\[
+	E(X) = \frac13 \left ( -1 + 0 + 1 \right ) = 0, \quad E(Y) = \frac23 \times 0 + \frac13 \times 1 = \frac13,
+	\]
+	and
+	\[
+	E(X^2) = \frac13 \left ( (-1)^2 + 0^2 + 1^2 \right ) = \frac23, \quad E(Y^2) = \frac23 \times 0^2 + \frac13 \times 1^2 = \frac13,
+	\]
+	so $\mathrm{Var}(X) = 2/3$ and $\mathrm{Var}(Y) = 2/9$. 
+	
+	On the other hand, we have $(X+Y)(a) = -1$, $(X+Y)(b) = 1$, and $(X+Y)(c) = 1$, so
+	\[
+	E(X+Y = -1) = \frac13, \quad E(X+Y = 1) = \frac23.
+	\]
+	We deduce
+	\[
+	E(X+Y) = \frac13 \times (-1) + \frac23 \times 1 = \frac13
+	\]
+	(or we could use linearity), and
+	\[
+	E((X+Y)^2) = \frac13 \times (-1)^2 + \frac23 \times 1^2 = 1,
+	\]
+	so $\mathrm{Var}(X+Y) = 8/9$, which is indeed $\mathrm{Var}(X) + \mathrm{Var}(Y)$.
+	
+	Finally, $X$ and $Y$ are not independent since
+	\[
+	E(X = 0, Y = 0)  = 0 
+	\]
+	which is not equal to
+	\[
+	E(X = 0) E(Y = 0) = \frac13 \times \frac23 = \frac 29.
+	\]
+	
+\end{enumerate}
+\end{solution}
+
+\begin{question}
+    Suppose $(S,P)$ is a sample space and $X \colon S \to \mathbb{N}$ is a
+    random variable.  Prove that
+    \begin{equation}
+        P(X \geq a) \leq \frac{E(X)}{a} \label{eqn-markov}
+    \end{equation}
+    for any positive integer $a$. 
+    \textit{Hint: Partition $S$ into the events $X \geq a$ and $X < a$.}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\begin{proof}
+    We have
+    \begin{align*}
+        E(X) &= \sum_{x \in \mathbb{N}} x P(X=x)
+           \\&= \sum_{0 \leq x < a} x P(X=x) + \sum_{x = a}^\infty x P(X=x)
+           \\&\geq \sum_{x = a}^\infty x P(X=x)
+             \geq \sum_{x = a}^\infty a P(X=x) = a \sum_{x = a}^\infty  P(X=x)
+           \\&= a P(X\geq a)
+    \end{align*}
+    Dividing both sides of $E(X) \geq a P(X \geq a)$ by $a$ gives \eqref{eqn-markov}.
+\end{proof}
+This relation is often referred to as \emph{Markov's inequality}.  In words, it
+says large values become less likely the further out you go.
+\end{solution}
+
+\end{document}

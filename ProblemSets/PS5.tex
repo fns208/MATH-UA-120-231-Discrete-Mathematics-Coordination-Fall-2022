@@ -18,13 +18,13 @@
 \fi
 
 % Student: These lines describe some document metadata.
-\title{Problem Set 4}
+\title{Problem Set 5}
 \author{%
 % Student: change the next line to your name!
     Name
 \\  MATH-UA 120 Discrete Mathematics
 }
-\date{due November 11, 2022 at 11:00pm}
+\date{due November 18, 2022 at 11:00pm}
 
 
 \usepackage[headings=runin-fixed-nr]{exsheets}
@@ -110,88 +110,19 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 \section*{Assigned Problems}
 
 \begin{question}
-    Prove the following statement by contrapositive: \\
-    For all $n\in \mathbb{N}$, if $2^n<n!$, then $n>3$.
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
+    (Scheinerman, Exercise 24.16:) 
+    Let $A$ and $B$ be finite sets and let $f: A \rightarrow B$.  Prove that any two of the following statements being true implies that the third is true:
+	\begin{itemize}
+	\item[I.] $f$ is one-to-one
+	\item[II.] $f$ is onto
+	\item[III.] $|A| = |B|$
+	\end{itemize}
 
-
-\begin{question}
-    Prove the following statement by contradiction:\\
-    There exists no integers $a$ and $b$ for which $21a + 30b = 1$.
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-
-
-
-\begin{question}
-    (Scheinerman, Exercise 20.15:)
-    Prove the following statement by contradiction:\\ Let $A$ and $B$ be sets.  Prove that if $|A \cup B| = |A| + |B|$, then $A\cap B = \emptyset$.
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-\begin{question}
-    Show that $\sqrt{p}$ is irrational when $p$ is prime. (\textit{Hint: You should use the fact: if $q$ is prime and $q\mid n^2$, then $q\mid n$.})
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-\begin{question}
-    (Scheinerman, Exercise 21.7:) 
-    Suppose $F_n$ denotes the $n$th Fibonacci number, where
-    \[ F_0 = 1, ~ F_1 = 1, ~ F_n = F_{n-1} + F_{n-2} \text{ for } n \geq 2.\]
-    The inequality $F_n > 1.6^n$ is true for all $n$ that are large enough.  Do some calculations to find out for what values of $n$ this inequality holds.  Then, prove your assertion using contradiction and smallest counterexample.
-
-    (Note: you want to prove a statement of the form: ``For all integers $n \geq N$, $F_n > 1.6^n$.''  Your task is to first figure out what number $N$ should be.)\\~\\
-    \textit{Hint: $N=29$.}
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-
-\begin{question}
-    (Scheinerman, Exercise 22.4:) 
-    Prove the following by induction.  For a positive integer $n$, $\displaystyle \frac{1}{1\cdot 2} + \frac{1}{2 \cdot 3} + \ldots + \frac{1}{n(n+1)} = 1 - \frac{1}{n+1}$.
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-% Here is an example on how to label your bullets to follow the induction template.
-%\begin{description}
-%\item[Base Case: ] 
-%\item[Inductive Hypothesis: ] 
-%\item[Inductive Step: ] 
-%\end{description}
-\end{solution}
-
-
-
-\begin{question}
-    Use strong induction to show that postage of 24-cents or more can be achieved by using only 5-cent and 7-cent stamps.
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-\begin{question}
-    (Scheinerman, Exercise 22.24:)
-    Use strong induction to show that every natural number can be expressed as the sum of distinct powers of $2$.  (For example, $21 = 2^0 + 2^2 + 2^ 4$.) (edit: show that every \textit{positive integer} can be expressed as the sum of distinct powers of 2.)
-\end{question}
-% Student: put your answer between the next two lines.
-\begin{solution}
-\end{solution}
-
-
-\begin{question}
-    Use strong induction to show if $n\in \mathbb{N}$, then $12\mid (n^4-n^2)$. \textit{Hint: This involves a lot of algebra. Try to simplify and then use the binomial theorem.}
+	{\it Hints:}
+	\begin{itemize}
+	\item Your proof will consist of three parts: (1) If I and II are true, then III is true, (2) If I and III are true, then II is true, and (3) If II and III are true, then I is true.
+	\item The pigeonhole principle might help.
+	\end{itemize}
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
@@ -200,11 +131,112 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 
 
 \begin{question}
-    Suppose that we have two piles of cards each containing $n$ cards. Two players play a game as follows. Each player, in turn, chooses one pile and them removes any number of cards. but at least one, from the chosen pile. The player who removes the last card wins the game. Show that the second player can always win the game.
+    Suppose $f: A \rightarrow A$ and $g: A \rightarrow A$ are both bijections.
+    \begin{enumerate}
+    \item Prove that $g \circ f$ is a bijection from $A$ to $A$.
+    \item Prove that $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$.
+    \end{enumerate}
 \end{question}
 % Student: put your answer between the next two lines.
 \begin{solution}
 \end{solution}
+
+\begin{question}
+    There are five points inside an equilateral triangle of side length 2. Show that at least two of the points are within 1 unit distance from each other.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+    Let $A = \{ x \in \Z ~:~ 3|x \}$.  Show that $A$ and $\mathbb{N}$ has the same cardinality.  {\it Hint:} construct a function $f: A \rightarrow \mathbb{N}$ (or $f: \mathbb{N} \rightarrow A$) and show that it is one-to-one and onto.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Let $A$ be the set of all real numbers between $0$ and $1$ just having 1's and 2's in their decimal expansion. Prove that the cardinalities of $A$ and $\mathbb{N}$ are different.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
+\begin{question}
+        A fair coin is flipped 10 times.
+    \begin{enumerate}
+        \item What is the probability that there are an equal number of head and
+            tails?
+        \item What is the probability the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails and the first three flips are heads?
+        \item What is the probability that there are an equal number of heads
+            and tails or the first three flips are heads (or both)?
+        \item What is the probability that the first three flips are heads given
+            that an equal number of heads and tails are flipped?
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    An unfair coin shows heads with probability $p$ and tails with probability
+    $1-p$. Suppose this coin is flipped $2$ times. Let $A$ be the event that the coin comes up first heads and
+    then tails.  Let $B$ be the event that the coin comes up first tails and
+    then heads.
+    \begin{enumerate}
+        \item  Find $P(A)$.
+        \item  Find $P(B)$.
+        \item  Find $P(A \mid A \cup B)$.
+        \item  Find $P(B \mid A \cup B)$.
+    \end{enumerate}
+    Explain how one could use this unfair coin to make a fair decision.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Suppose that $A$ and $B$ are events in a sample space $(S,P)$.
+    Prove or disprove:
+    \begin{enumerate}
+        \item If $P(A \cap B)=0$, then $P(A\mid B)=P(B\mid A)$ if and only
+            if $P(A)=P(B)$.
+        \item If $P(A)>0, P(B)>0$ but $P(A \cap B)=0$, then $P(A\mid
+            B)=P(B\mid A)$.  If proven, give an example of two such events
+            with $P(A) \ne P(B)$.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Consider the sample space $S = \{ a, b, c \}$, with equal probability for each outcome. Define the random variables $X$ and  
+    $Y$ by $X(a) = -1, \quad X(b) = 0, \quad X(c) = 1, \quad Y(a) = Y(c) = 0, \quad Y(b) = 1.$ 
+    Check that $\mathrm{Var}(X+Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)$, but that $X$ and $Y$ are not independent.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Suppose $(S,P)$ is a sample space and $X \colon S \to \mathbb{N}$ is a
+    random variable.  Prove that
+    \begin{equation*}
+        P(X \geq a) \leq \frac{E(X)}{a}
+    \end{equation*}
+    for any positive integer $a$. 
+     \textit{Hint: Partition $S$ into the events $X \geq a$ and $X < a$.}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+
 
 
 \end{document}

@@ -118,6 +118,11 @@ These are to be written up in \LaTeX{} and turned in to Gradescope.\\
 % Student: put your answer between the next two lines.
 \begin{solution}
 Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elements $x, y\in A$ where $(x, y), (y, x) \in R$. Since $(x, y) \in R$, then $(y, x) \in R^{-1}$, and since $(y, x) \in R$, then $(x, y) \in R^{-1}$. This means that $(x, y) \in R\cap R^{-1}$ and $(y, x) \in R\cap R^{-1}$. Since $(x, y) \in\mathrel{R}\cap R^{-1}\subseteq \{ (a, a) ~:~ a \in A \}$, then $(x, y) \in \subseteq \{ (a, a) ~:~ a \in A \}$.  This means that $x = y$. Since $(x, y), (y, x) \in R$ implies $x= y$, then $R$ is antisymmetric.
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 
@@ -138,12 +143,15 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 \begin{solution}
     \begin{enumerate}
     \item One possible example among numerous examples: Consider the set $A = \{1, 2, 3\}$.  The relation $R = \{ (1, 1), (1, 2), (2, 1), (2, 2) \}$ is symmetric (if $(x, y) \in R$ then $(y, x) \in R$ as well), transitive ($\forall x, y,z \in A$ where $(x, y)\in R$ and $(y, z) \in R$, then $(x, z) \in R$ also), but not reflexive since $(3, 3) \notin R$.
-    
-    A minimal example would be $A = \{1\}$ and $R = \emptyset$. Then $R$ is symmetric and transitive, both vacuously. But $R$ is not symmetric because $(1,1) \notin R$.
-    \item To show that a relation is reflexive, we want $(x, x)$ to be in $R$ \underline{for all} $x \in A$.  The proof above says that if there exist $(x, y) \in R$ (which also means that $(y, x)$ is also in $R$), then it must be the case that $(x,x) \in R$ (and $(y,y) \in R)$.  
+    \item To show that a relation is reflexive, we want $(x, x)$ to be in $R$ \underline{for all} $x \in A$.  The proof above says that if $(x, y) \in R$ (which also means that $(y, x)$ is also in $R$) , then it must be the case that $x \in R$ (and $y \in R)$.  
 
     However, if an element $z$ does not appear in any pair, then $(z, z) \notin R$ and hence $R$ is not reflexive.
     \end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 5P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -160,6 +168,11 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
     \item Suppose that $x$ and $y$ are both odd.  Then, there exist integers $m, n$ such that $x = 2m + 1$ and $y = 2n +1$.  Therefore, $x-y = (2m + 1) - (2n+1) = 2(m-n)$.  This means that $2\mid(x-y)$.  Therefore, $x \equiv y \pmod{2}$.
     \item Suppose that $x$ and $y$ are both even.  Then, there exist integers $m, n$ such that $x = 2m$ and $y = 2n$.  Therefore, $x-y = 2m - 2n = 2(m-n)$.  This means that $2\mid(x-y)$.  Therefore, $x \equiv y \pmod{2}$.
     \end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 5P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -189,12 +202,18 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\end{itemize}
 	\item Now, $[0]$ contains all $a \in A$ such that $9 \mid a^2$, which is only true for $a = 0, 3, 6$. Then $[1]$ contains all $a \in A$ such that $9 \mid (a^2 - 1)$, which is only true for $a = 1, 8$. Then $[2]$ contains all $a \in A$ such that $9 \mid (a^2 - 4)$, which is only true for $a = 2, 7$. Then $[4]$ contains all $a \in A$ such that $9 \mid (a^2 - 16)$, which is only true for $a = 4, 5$. We see that we have found all elements, and therefore there are four equivalence classes:
 		\begin{align*}
-		[0] = [3] = [6] &= \{ 0, 3, 6 \} \\
+		[0] = [3] &= \{ 0, 3, 6 \} \\
 		[1] = [8] &= \{ 1, 8 \} \\
 		[2] = [7] &= \{ 2, 7 \} \\
 		[4] = [5] &= \{ 4, 5 \}
 		\end{align*}
 	\end{enumerate}
+{\color{red} Rubric:
+\begin{itemize}
+\item 6P for part a: 2P per property proved
+\item 4P for part b: 2P for explanation and 2P for listing equivalence classes
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -232,6 +251,12 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 		\item $ R$ is not transitive. Indeed, take $x = \{ 0 \}$, $y = \{0,1\}$, and $z = \{1\}$. Then clearly $x \mathrel{R}y$ and $y \mathrel{R}z$, but $x$ and $z$ are not related.
 	\end{itemize}
      \end{enumerate}
+ {\color{red} Rubric:
+\begin{itemize}
+\item 4P for part a: 2P for proving reflexive and 1P for disproving each part
+\item 3P for part b and c: 1P for disproving each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -246,6 +271,11 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
     \item[($\Rightarrow$)] Suppose that $a \in [b]$.  This means that $a\mathrel{R}b$.  By symmetry (since $R$ is an equivalence relation), $b\mathrel{R}a$.  Therefore, $b \in [a]$.
     \item[($\Leftarrow$)] Suppose that $b \in [a]$.  This means that $b\mathrel{R}a$.  By symmetry (since $R$ is an equivalence relation), $a\mathrel{R}b$.  Therefore, $a \in [b]$.
     \end{itemize}
+ {\color{red} Rubric:
+\begin{itemize}
+\item 5P for each part
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -272,6 +302,11 @@ Suppose that $R \cap R^{-1} \subseteq \{ (a, a) ~:~ a \in A \}$. Consider elemen
 	\]
 	different partitions.
    	\end{enumerate}
+ {\color{red} Rubric:
+\begin{itemize}
+\item 5P for each part: 3P for explanation and 2P for answer that matches explanation.
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -303,6 +338,11 @@ Therefore,
    & = \frac{35!}{7!(5!)^6}
 \end{align*}
     \end{enumerate}
+ {\color{red} Rubric:
+\begin{itemize}
+\item 5P for each part: 3P for explanation and 2P for answer that matches explanation.
+\item Grader: Please expand on rubric yourself.
+\end{itemize}}
 \end{solution}
 
 
@@ -321,6 +361,11 @@ Therefore,
 
 Thus, the two answers must be equal:
 \[ k \binom{n}{k} = n \binom{n-1}{k-1}. \]
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 
@@ -351,6 +396,11 @@ Therefore, the total number of ways we can choose $n$ balls out of $2n$ balls is
 
 Since the above two are correct answers to the same question, then they must be equal:
 \[ \binom{n}{0}\binom{n}{n} + \binom{n}{1} \binom{n}{n-1} + \binom{n}{2}\binom{n}{n-2} + \ldots + \binom{n}{n-1}\binom{n}{1} + \binom{n}{n}\binom{n}{0} = \binom{2n}{n}. \]
+
+{\color{red} Rubric:
+\begin{itemize}
+\item Follow RVF rubric with 1P for \LaTeX
+\end{itemize}}
 \end{solution}
 
 
